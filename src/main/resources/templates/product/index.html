@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Blank Page</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/AdminLTE.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/_all-skins.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/jquery-ui.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+  <script th:src="@{/assets/js/angular.min.js}"></script>
+  <script th:src="@{/assets/js/app.js}"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <a th:href="@{/admin/add-category}" class="btn btn-success">+Thêm mới Menu</a>
+
+            <div class="box-tools">
+              <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tbody>
+              <tr>
+                <th>ID</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Action</th>
+              </tr>
+              <tr th:each="product: ${listProduct}">
+                  <td th:text="${product.id}"></td>
+                  <td th:text="${product.name}"></td>
+                  <td>
+                    <span th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 3, 'POINT')}">10.00</span>
+                  </td>
+                <td>
+                  <img th:src="@{'/uploads/'+${product.image}}" class="img-circle">
+                </td>
+                <td th:text="${product.category_product.type}"></td>
+                <td>
+                  <a th:href="@{/admin/product-edit/{id}(id=${product.id})}" class="btn btn-success">Sửa</a>
+                  <a th:href="@{/admin/product-delete/{id}(id=${product.id})}" onclick="return confirm('Are you sure!!')" class="btn btn-danger">Xóa</a>
+                </td>
+                </td>
+              </tr>
+
+
+              </tbody></table>
+          </div>
+
+          <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li><a href="#">"</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">"</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 0.0.1
+    </div>
+    <strong>Copyright &copy; 2018 <a href="https://adminlte.io">TTPM_BKAP</a>.</strong>
+  </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/adminlte.min.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="tinymce/tinymce.min.js"></script>
+<script src="tinymce/config.js"></script>
+<script src="js/function.js"></script>
+</body>
+</html>

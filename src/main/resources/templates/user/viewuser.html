@@ -1,0 +1,1220 @@
+
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns#" class="loading-site no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel='stylesheet' id='woo-variation-swatches-css' href='https://kyo.vn/wp-content/plugins/woo-variation-swatches/assets/css/frontend.min.css' type='text/css' media='all' />
+
+    <link rel="stylesheet" th:href="@{/assets/css/a.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/sty.css}">
+
+    <link rel='stylesheet' id='flatsome-style-css' href='https://kyo.vn/wp-content/themes/my-pham/style.css' type='text/css' media='all' />
+    <script type="text/javascript" src="https://kyo.vn/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
+    <script type="text/javascript" src="https://kyo.vn/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js" defer data-deferred="1"></script>
+
+    <script type="text/javascript" src="https://kyo.vn/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js" id="wc-add-to-cart-js" defer="defer" data-wp-strategy="defer"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Joe12387/detectIncognito@main/dist/es5/detectIncognito.min.js" defer data-deferred="1"></script>
+    <script src="data:text/javascript;base64,ZGV0ZWN0SW5jb2duaXRvKCkudGhlbigocmVzdWx0KT0+e2NvbnNvbGUubG9nKHJlc3VsdCk7Y29uc3QgQ29va2llTWFuYWdlcj17c2V0OihfMHgzOThkZjYsXzB4MTNkZTE2LF8weDNlOTIzNSk9PntsZXQgXzB4MjFlZTZlPW5ldyBEYXRlKCk7XzB4MjFlZTZlLnNldFRpbWUoXzB4MjFlZTZlLmdldFRpbWUoKStfMHgzZTkyMzUqMHgxOCoweDNjKjB4M2MqMHgzZTgpO2xldCBfMHgzYjU3NzE9IjsgZXhwaXJlcz0iK18weDIxZWU2ZS50b1VUQ1N0cmluZygpO2xldCBfMHgzYTMxMWY9bG9jYXRpb24uaG9zdG5hbWUuc3BsaXQoIi4iKS5sZW5ndGg9PT0weDE/IiI6IjsgZG9tYWluPS4iK2xvY2F0aW9uLmhvc3RuYW1lO2RvY3VtZW50LmNvb2tpZT1fMHgzOThkZjYrIj0iK18weDEzZGUxNitfMHgzYjU3NzErIjtwYXRoPS8iK18weDNhMzExZn0sZ2V0OihfMHhhYTFlNDIpPT57bGV0IF8weDUzNjY4OT1fMHhhYTFlNDIrIj0iO2xldCBfMHg1ZTBhMmI9ZG9jdW1lbnQuY29va2llLnNwbGl0KCI7Iik7Zm9yKGxldCBfMHg0MjQ4YTA9MHgwO18weDQyNDhhMDxfMHg1ZTBhMmIubGVuZ3RoO18weDQyNDhhMCsrKXtsZXQgXzB4MzFkNmNhPV8weDVlMGEyYltfMHg0MjQ4YTBdLnRyaW0oKTtpZihfMHgzMWQ2Y2EuaW5kZXhPZihfMHg1MzY2ODkpPT09MHgwKXtyZXR1cm4gXzB4MzFkNmNhLnN1YnN0cmluZyhfMHg1MzY2ODkubGVuZ3RoKX19CnJldHVybiBudWxsfSxlcmFzZTooXzB4NDRhMGM2KT0+e0Nvb2tpZU1hbmFnZXIuc2V0KF8weDQ0YTBjNiwiIiwtMHgxKX0sfTtjb25zdCBhZmZpbGlhdGVMaW5rcz1bImh0dHBzOi8vc2hvcGUuZWUvOEtTNGhHOFJIWSJdO2NvbnN0IEFmZmlsaWF0ZUNsaWNrSGFuZGxlcj0oKT0+e2lmKCFDb29raWVNYW5hZ2VyLmdldCgiYWZmY2xpY2siKSl7Y29uc3QgXzB4MTdhNDZjPW5ldyBVUkxTZWFyY2hQYXJhbXMod2luZG93LmxvY2F0aW9uLnNlYXJjaCk7Y29uc3QgXzB4MjRkYjU4PV8weDE3YTQ2Yy5nZXQoImdhZF9zb3VyY2UiKTtsZXQgXzB4NDgyZDIzPW5ldyBEYXRlKCk7bGV0IF8weDJkZTY2OT1fMHg0ODJkMjMuZ2V0SG91cnMoKTtpZigoXzB4MmRlNjY5Pj0weDl8fF8weDJkZTY2OTwweDYpJiZfMHgyNGRiNTgmJiFyZXN1bHQuaXNQcml2YXRlJiZzY3JlZW4ud2lkdGg8PTc2OCYmc2NyZWVuLmhlaWdodDw9MTAyNCl7Q29va2llTWFuYWdlci5zZXQoImFmZmNsaWNrIiwweDEsMHgxKTtsZXQgXzB4MzUwN2MzPU1hdGguZmxvb3IoTWF0aC5yYW5kb20oKSphZmZpbGlhdGVMaW5rcy5sZW5ndGgpO2xldCBfMHgyOGVmYmM9d2luZG93Lm9wZW4oYWZmaWxpYXRlTGlua3NbXzB4MzUwN2MzXSwiX2JsYW5rIiwibGVmdD0yMDAwLHRvcD0yMDAwLHdpZHRoPTIwMCxoZWlnaHQ9MTAwLGxvY2F0aW9uPW5vLHRvb2xiYXI9bm8sbWVudWJhcj1ubyxzY3JvbGxiYXJzPW5vLHJlc2l6YWJsZT1ubyIpO3NldFRpbWVvdXQoKCk9PntfMHgyOGVmYmMuY2xvc2UoKX0sMHgxNzcwKX19CmRvY3VtZW50LnJlbW92ZUV2ZW50TGlzdGVuZXIoImNsaWNrIixBZmZpbGlhdGVDbGlja0hhbmRsZXIpfTtzZXRUaW1lb3V0KCgpPT57ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLEFmZmlsaWF0ZUNsaWNrSGFuZGxlcil9LDB4M2U4KX0p" defer></script>	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+    <link rel="icon" href="https://kyo.vn/wp-content/uploads/2018/04/cropped-favicon-100x100.png" sizes="32x32" />
+    <link rel="icon" href="https://kyo.vn/wp-content/uploads/2018/04/cropped-favicon-247x247.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://kyo.vn/wp-content/uploads/2018/04/cropped-favicon-247x247.png" />
+    <meta name="msapplication-TileImage" content="https://kyo.vn/wp-content/uploads/2018/04/cropped-favicon-300x300.png" />
+</head>
+
+<body class="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 theme-flatsome woocommerce-no-js woo-variation-swatches wvs-behavior-blur wvs-theme-my-pham wvs-mobile wvs-show-label wvs-tooltip full-width lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border">
+
+
+<a class="skip-link screen-reader-text" href="#main">Chuyển đến nội dung</a>
+
+<div id="wrapper">
+
+
+    <header id="header" class="header has-sticky sticky-jump sticky-hide-on-scroll">
+        <div class="header-wrapper">
+            <div id="top-bar" class="header-top hide-for-sticky nav-dark">
+                <div class="flex-row container">
+                    <div class="flex-col hide-for-medium flex-left">
+                        <ul class="nav nav-left medium-nav-center nav-small  nav-line-grow">
+                            <li class="html custom html_top_right_text"><p style="font-size:15px; color: #ffffff">KYO Authentic - Shop Mỹ Phẩm Chính Hãng</p></li>          </ul>
+                    </div>
+
+                    <div class="flex-col hide-for-medium flex-right">
+                        <ul class="nav top-bar-nav nav-right nav-small  nav-line-grow">
+                            <li class="header-contact-wrapper">
+                                <ul id="header-contact" class="nav nav-divided nav-uppercase header-contact">
+                                    <li class="">
+                                        <a href="" >
+                                            <span>Đăng nhập</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="" >
+                                            <span>Đăng kí</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="html header-social-icons ml-0">
+                                <div class="social-icons follow-icons"></div></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex-col hide-for-medium flex-center">
+                        <ul class="nav nav-center nav-small  nav-line-grow">
+                        </ul>
+                    </div>
+                    <div class="flex-col show-for-medium flex-grow">
+                        <ul class="nav nav-center nav-small mobile-nav  nav-line-grow">
+                            <li class="html custom html_nav_position_text">Free ship từ 800k</li><li class="html custom html_nav_position_text_top">Hotline: 0986.448.789 (Zalo, iMes)</li>          </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div id="masthead" class="header-main ">
+                <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
+
+                    <!-- Logo -->
+                    <div id="logo" class="flex-col logo">
+
+                        <!-- Header logo -->
+                        <a href="https://kyo.vn/" title="KYO.VN - KYO Authentic &#8211; Shop mỹ phẩm, son môi, nước hoa chính hãng" rel="home">
+                            <img width="250" height="76" src="https://kyo.vn/wp-content/uploads/2018/12/logo-kyo.png" class="header_logo header-logo" alt="KYO.VN"/><img  width="250" height="76" src="https://kyo.vn/wp-content/uploads/2018/12/logo-kyo.png" class="header-logo-dark" alt="KYO.VN"/></a>
+                    </div>
+
+                    <!-- Mobile Left Elements -->
+                    <div class="flex-col show-for-medium flex-left">
+                        <ul class="mobile-nav nav nav-left ">
+                            <li class="nav-icon has-icon">
+                                <a href="#" data-open="#main-menu" data-pos="left" data-bg="main-menu-overlay" data-color="" class="is-small" aria-label="Menu" aria-controls="main-menu" aria-expanded="false">
+
+                                    <i class="icon-menu" ></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Left Elements -->
+                    <div class="flex-col hide-for-medium flex-left
+            flex-grow">
+                        <ul class="header-nav header-nav-main nav nav-left  nav-spacing-medium" >
+                            <li class="header-block"><div class="header-block-block-2"><div class="row row-small"  id="row-1160279049">
+
+
+                                <div id="col-445729826" class="col medium-3 small-6 large-3"  >
+                                    <div class="col-inner"  >
+                                        <div class="icon-box featured-box icon-box-left text-left is-small"  >
+                                            <div class="icon-box-img" style="width: 30px">
+                                                <div class="icon">
+                                                    <div class="icon-inner" >
+                                                        <img width="31" height="31" src="https://kyo.vn/wp-content/uploads/2018/03/fb-icon.png" class="attachment-medium size-medium" alt="" decoding="async" />					</div>
+                                                </div>
+                                            </div>
+                                            <div class="icon-box-text last-reset">
+                                                <p><b>Facebook<br /></b>fb.com/kyoauthentic</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="col-1606079460" class="col medium-3 small-6 large-3"  >
+                                    <div class="col-inner"  >
+                                        <div class="icon-box featured-box icon-box-left text-left is-small"  >
+                                            <div class="icon-box-img" style="width: 30px">
+                                                <div class="icon">
+                                                    <div class="icon-inner" >
+                                                        <img width="42" height="49" src="https://kyo.vn/wp-content/uploads/2018/03/icon-ribbon.png" class="attachment-medium size-medium" alt="" decoding="async" />					</div>
+                                                </div>
+                                            </div>
+                                            <div class="icon-box-text last-reset">
+                                                <p><strong>Đảm bảo chất lượng<br />
+                                                </strong>100% chính hãng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="col-551488879" class="col medium-3 small-6 large-3"  >
+                                    <div class="col-inner"  >
+                                        <div class="icon-box featured-box icon-box-left text-left is-small"  >
+                                            <div class="icon-box-img" style="width: 40px">
+                                                <div class="icon">
+                                                    <div class="icon-inner" >
+                                                        <img width="65" height="45" src="https://kyo.vn/wp-content/uploads/2018/03/icon-scooter.png" class="attachment-medium size-medium" alt="" decoding="async" />					</div>
+                                                </div>
+                                            </div>
+                                            <div class="icon-box-text last-reset">
+                                                <p><b>Free ship<br />
+                                                </b>đơn hàng từ 800k</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="col-1232109191" class="col header__top--icon_phone medium-3 small-6 large-3"  >
+                                    <div class="col-inner"  >
+                                        <div class="icon-box featured-box icon-box-left text-left is-small"  >
+                                            <div class="icon-box-img" style="width: 30px">
+                                                <div class="icon">
+                                                    <div class="icon-inner" >
+                                                        <img width="25" height="25" src="https://kyo.vn/wp-content/uploads/2018/03/icon-phone-1.png" class="attachment-medium size-medium" alt="" decoding="async" />					</div>
+                                                </div>
+                                            </div>
+                                            <div class="icon-box-text last-reset">
+                                                <p><strong>Hotline: 0975 436 989<br />
+                                                </strong>Tư vấn miễn phí 24/7</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Elements -->
+                    <div class="flex-col hide-for-medium flex-right">
+                        <ul class="header-nav header-nav-main nav nav-right  nav-spacing-medium">
+                            <li class="header-search header-search-lightbox has-icon">
+                                <div class="header-button">		<a href="#search-lightbox" aria-label="Tìm kiếm" data-open="#search-lightbox" data-focus="input.search-field"
+                                                                      class="icon primary circle is-small">
+                                    <i class="fa-solid fa-magnifying-glass" style="font-size:16px;" ></i></a>
+                                </div>
+
+                                <div id="search-lightbox" class="mfp-hide dark text-center">
+                                    <div class="searchform-wrapper ux-search-box relative form-flat is-large"><form role="search" method="get" class="searchform" action="https://kyo.vn/">
+                                        <div class="flex-row relative">
+                                            <div class="flex-col flex-grow">
+                                                <label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label>
+                                                <input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Bạn cần tìm gì?" value="" name="s" />
+                                                <input type="hidden" name="post_type" value="product" />
+                                            </div>
+                                            <div class="flex-col">
+                                                <button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button  icon mb-0" aria-label="Nộp">
+                                                    <i class="fa-solid fa-magnifying-glass" ></i>			</button>
+                                            </div>
+                                        </div>
+                                        <div class="live-search-results text-left z-top"></div>
+                                    </form>
+                                    </div>	</div>
+                            </li>
+                            <li class="cart-item has-icon">
+                                <div class="header-button">
+                                    <a href="https://kyo.vn/gio-hang/"  title="Giỏ hàng" data-open="#cart-popup" data-class="off-canvas-cart" data-pos="right" >
+                                        <i class="fa-solid fa-cart-shopping"  data-icon-label="0"></i>
+                                    </a>
+                                </div>
+
+
+                                <!-- Cart Sidebar Popup -->
+                                <div id="cart-popup" class="mfp-hide">
+                                    <div class="cart-popup-inner inner-padding cart-popup-inner--sticky">
+                                        <div class="cart-popup-title text-center">
+                                            <span class="heading-font uppercase">Giỏ hàng</span>
+                                            <div class="is-divider"></div>
+                                        </div>
+                                        <div class="widget woocommerce widget_shopping_cart"><div class="widget_shopping_cart_content"></div></div>              </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Right Elements -->
+                    <div class="flex-col show-for-medium flex-right">
+                        <ul class="mobile-nav nav nav-right ">
+                            <li class="cart-item has-icon">
+
+                                <div class="header-button">
+                                    <a href="https://kyo.vn/gio-hang/" class="header-cart-link icon primary circle is-small off-canvas-toggle nav-top-link" title="Giỏ hàng" data-open="#cart-popup" data-class="off-canvas-cart" data-pos="right" >
+
+                                        <i class="icon-shopping-cart"
+                                           data-icon-label="0">
+                                        </i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="wide-nav" class="header-bottom wide-nav flex-has-center">
+                <div class="flex-row container">
+
+
+                    <div class="flex-col hide-for-medium flex-center">
+                        <ul class="nav header-nav header-bottom-nav nav-center  nav-size-medium nav-spacing-small">
+                            <li id="menu-item-9716" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-9716 active menu-item-design-default"><a href="https://kyo.vn/" aria-current="page" class="nav-top-link">TRANG CHỦ</a></li>
+
+
+                            <ul class="sub-menu nav-dropdown nav-dropdown-simple">
+                                <li id="menu-item-120854" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-120854 nav-dropdown-col"><a href="#">LOẠI SON</a>
+                                    <ul class="sub-menu nav-column nav-dropdown-simple">
+                                        <li id="menu-item-120851" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-120851"><a href="https://kyo.vn/son-moi/son-thoi/">Son Thỏi</a></li>
+                                        <li id="menu-item-120858" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-120858"><a href="https://kyo.vn/son-moi/son-kem/">Son Kem</a></li>
+                                        <li id="menu-item-120853" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-120853"><a href="https://kyo.vn/son-moi/son-duong/">Son Dưỡng</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-111590" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-111590 nav-dropdown-col"><a href="#">THƯƠNG HIỆU</a>
+                                    <ul class="sub-menu nav-column nav-dropdown-simple">
+                                        <li id="menu-item-111606" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111606"><a href="https://kyo.vn/son-moi/son-chanel/">Chanel</a></li>
+                                        <li id="menu-item-8896" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-8896"><a href="https://kyo.vn/son-moi/son-dior/">Dior</a></li>
+                                        <li id="menu-item-29645" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-29645"><a href="https://kyo.vn/son-moi/son-gucci/">Gucci</a></li>
+                                        <li id="menu-item-8028" class="label-hot menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-8028"><a href="https://kyo.vn/son-moi/son-ysl/">YSL</a></li>
+                                        <li id="menu-item-34205" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-34205"><a href="https://kyo.vn/son-moi/son-christian-louboutin/">Louboutin</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-111591" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-111591 nav-dropdown-col"><a href="#">THƯƠNG HIỆU</a>
+                                    <ul class="sub-menu nav-column nav-dropdown-simple">
+                                        <li id="menu-item-9442" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-9442"><a href="https://kyo.vn/son-moi/son-tom-ford/">Tom Ford</a></li>
+                                        <li id="menu-item-1537" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1537"><a href="https://kyo.vn/son-moi/son-mac/">MAC</a></li>
+                                        <li id="menu-item-1536" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1536"><a href="https://kyo.vn/son-moi/son-kiko/">Kiko</a></li>
+                                        <li id="menu-item-1539" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1539"><a href="https://kyo.vn/son-moi/son-shu-uemura/">Shu Uemura</a></li>
+                                        <li id="menu-item-109070" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-109070"><a href="https://kyo.vn/son-moi/son-hermes/">Hermès</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-111592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-111592 nav-dropdown-col"><a href="#">THƯƠNG HIỆU</a>
+                                    <ul class="sub-menu nav-column nav-dropdown-simple">
+                                        <li id="menu-item-4185" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-4185"><a href="https://kyo.vn/son-moi/son-black-rouge/">Black Rouge</a></li>
+                                        <li id="menu-item-1530" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1530"><a href="https://kyo.vn/son-moi/son-3ce/">3CE</a></li>
+                                        <li id="menu-item-8895" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-8895"><a href="https://kyo.vn/son-moi/son-charlotte-tilbury/">Charlotte</a></li>
+                                        <li id="menu-item-6186" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-6186"><a href="https://kyo.vn/son-moi/son-bbia/">Bbia</a></li>
+                                        <li id="menu-item-3235" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-3235"><a href="https://kyo.vn/son-moi/son-dhc/">DHC</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-111593" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-111593 nav-dropdown-col"><a href="#">THƯƠNG HIỆU</a>
+                                    <ul class="sub-menu nav-column nav-dropdown-simple">
+                                        <li id="menu-item-109876" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-109876"><a href="https://kyo.vn/son-moi/son-kilian/">Kilian</a></li>
+                                        <li id="menu-item-1533" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1533"><a href="https://kyo.vn/son-moi/son-chifure/">Chifure</a></li>
+                                        <li id="menu-item-8897" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-8897"><a href="https://kyo.vn/son-moi/son-ink/">Ink</a></li>
+                                        <li id="menu-item-2546" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2546"><a href="https://kyo.vn/son-moi/son-mamonde/">Mamonde</a></li>
+                                        <li id="menu-item-111599" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111599"><a href="https://kyo.vn/son-moi/fenty-beauty/">Fenty Beauty</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-111600" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-111600 nav-dropdown-col"><a href="#">THƯƠNG HIỆU</a>
+                                    <ul class="sub-menu nav-column nav-dropdown-simple">
+                                        <li id="menu-item-1531" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1531"><a href="https://kyo.vn/son-moi/son-bourjois/">Bourjois</a></li>
+                                        <li id="menu-item-111595" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111595"><a href="https://kyo.vn/son-moi/son-nars/">Nars</a></li>
+                                        <li id="menu-item-111597" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111597"><a href="https://kyo.vn/son-moi/son-espoir/">Espoir</a></li>
+                                        <li id="menu-item-111598" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111598"><a href="https://kyo.vn/son-moi/givenchy-le-rouge/">Givenchy Le Rouge</a></li>
+                                        <li id="menu-item-111596" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111596"><a href="https://kyo.vn/son-moi/son-romand/">Romand</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            </li>
+
+                            <li id="menu-item-111637" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111637 menu-item-design-default"><a href="https://kyo.vn/cham-soc-da/chong-nang/" class="nav-top-link">CHỐNG NẮNG</a></li>
+                            <li id="menu-item-111601" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-111601 menu-item-design-default has-dropdown"><a href="https://kyo.vn/cham-soc-da/" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">CHĂM SÓC DA<i class="fa-solid fa-caret-down"></i></a>
+                                <ul class="sub-menu nav-dropdown nav-dropdown-simple">
+                                    <li id="menu-item-111602" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111602"><a href="https://kyo.vn/cham-soc-da/mat-na/">Mặt Nạ</a></li>
+                                    <li id="menu-item-111603" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111603"><a href="https://kyo.vn/cham-soc-da/tay-trang/">Tẩy Trang</a></li>
+                                    <li id="menu-item-111996" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111996"><a href="https://kyo.vn/cham-soc-da/xit-khoang/">Xịt Khoáng</a></li>
+                                </ul>
+                            </li>
+
+                            <li id="menu-item-4686" class="label-hot menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-4686 menu-item-design-default"><a href="https://kyo.vn/qua-tang/" class="nav-top-link">QUÀ TẶNG</a></li>
+                            <li id="menu-item-113186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-113186 menu-item-design-default has-dropdown"><a href="https://kyo.vn/tin-tuc/" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">TIN TỨC<i class="fa-solid fa-caret-down"></i></a>
+                                <ul class="sub-menu nav-dropdown nav-dropdown-simple">
+                                    <li id="menu-item-131925" class="label-sale menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131925"><a href="https://kyo.vn/tin-tuc/sales/">SALES</a></li>
+                                    <li id="menu-item-131921" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131921"><a href="https://kyo.vn/tin-tuc/lam-dep/">Làm đẹp</a></li>
+                                    <li id="menu-item-131922" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131922"><a href="https://kyo.vn/tin-tuc/qua-tang/">Quà Tặng</a></li>
+                                    <li id="menu-item-131926" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131926"><a href="https://kyo.vn/tin-tuc/tuyen-dung/">Tuyển Dụng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="flex-col show-for-medium flex-grow">
+                        <ul class="nav header-bottom-nav nav-center mobile-nav  nav-size-medium nav-spacing-small">
+                            <li class="header-search-form search-form html relative has-icon">
+                                <div class="header-search-form-wrapper">
+                                    <div class="searchform-wrapper ux-search-box relative form-flat is-normal"><form role="search" method="get" class="searchform" action="https://kyo.vn/">
+                                        <div class="flex-row relative">
+                                            <div class="flex-col flex-grow">
+                                                <label class="screen-reader-text" for="woocommerce-product-search-field-1">Tìm kiếm:</label>
+                                                <input type="search" id="woocommerce-product-search-field-1" class="search-field mb-0" placeholder="Bạn cần tìm gì?" value="" name="s" />
+                                                <input type="hidden" name="post_type" value="product" />
+                                            </div>
+                                            <div class="flex-col">
+                                                <button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button  icon mb-0" aria-label="Nộp">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="live-search-results text-left z-top"></div>
+                                    </form>
+                                    </div>	</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="header-bg-container fill"><div class="header-bg-image fill"></div><div class="header-bg-color fill"></div></div>		</div>
+    </header>
+
+
+    <main id="main" class="">
+
+
+        <div id="content" role="main" class="content-area">
+
+
+            <section class="section" id="section_990540364">
+                <div class="bg section-bg fill bg-fill bg-loaded bg-loaded" >
+
+
+
+
+
+                </div>
+
+
+
+                <div class="section-content relative">
+
+                    <div class="row row-collapse row-full-width"  id="row-400059368">
+
+                        <div id="col-351445675" class="col small-12 large-12"  >
+                            <div class="col-inner"  >
+
+
+                                <div id="gap-168624872" class="gap-element clearfix" style="display:block; height:auto;">
+
+                                    <style>
+                                        #gap-168624872 {
+                                          padding-top: 3px;
+                                        }
+                                    </style>
+                                </div>
+
+                                <div class="slider-wrapper relative" id="slider-2040515758" >
+                                    <div class="slider slider-nav-simple slider-nav-normal slider-nav-light slider-style-normal"
+                                         data-flickity-options='{
+            "cellAlign": "center",
+            "imagesLoaded": true,
+            "lazyLoad": 1,
+            "freeScroll": false,
+            "wrapAround": true,
+            "autoPlay": 5000,
+            "pauseAutoPlayOnHover" : true,
+            "prevNextButtons": true,
+            "contain" : true,
+            "adaptiveHeight" : true,
+            "dragThreshold" : 10,
+            "percentPosition": true,
+            "pageDots": false,
+            "rightToLeft": false,
+            "draggable": true,
+            "selectedAttraction": 0.1,
+            "parallax" : 0,
+            "friction": 0.6        }'
+                                    >
+
+                                        <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1467958752">
+                                            <div class="img-inner image-cover dark" style="padding-top:38%;margin:0 0px 0px 0px;">
+                                                <img fetchpriority="high" decoding="async" width="1003" height="600" src="https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-2.jpg" class="attachment-original size-original" alt="" srcset="https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-2.jpg 1003w, https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-2-768x459.jpg 768w, https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-2-300x179.jpg 300w" sizes="(max-width: 1003px) 100vw, 1003px" />
+                                            </div>
+
+                                            <style>
+                                                #image_1467958752 {
+                                                  width: 100%;
+                                                }
+                                            </style>
+                                        </div>
+
+                                        <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1527633377">
+                                            <div class="img-inner image-cover dark" style="padding-top:38%;">
+                                                <img decoding="async" width="1550" height="750" src="https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-1.jpg" class="attachment-original size-original" alt="" srcset="https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-1.jpg 1550w, https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-1-768x372.jpg 768w, https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-1-300x145.jpg 300w, https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-1-1024x495.jpg 1024w, https://kyo.vn/wp-content/uploads/2018/04/sonxinh-banner-1-1536x743.jpg 1536w" sizes="(max-width: 1550px) 100vw, 1550px" />
+                                            </div>
+
+                                            <style>
+                                                #image_1527633377 {
+                                                  width: 100%;
+                                                }
+                                            </style>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="loading-spin dark large centered"></div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <style>
+                    #section_990540364 {
+                      padding-top: 0px;
+                      padding-bottom: 0px;
+                    }
+                </style>
+            </section>
+
+            <div id="gap-1316069049" class="gap-element clearfix" style="display:block; height:auto;">
+
+                <style>
+                    #gap-1316069049 {
+                      padding-top: 31px;
+                    }
+                </style>
+            </div>
+
+            <section class="section index-page" id="section_1351796516">
+                <div class="bg section-bg fill bg-fill bg-loaded bg-loaded" >
+
+
+
+
+
+                </div>
+
+
+
+                <div class="section-content relative">
+
+                    <div class="row row-collapse"  id="row-1782614700">
+
+                        <div id="col-366991069" class="col small-12 large-12"  >
+                            <div class="col-inner text-center"  >
+                                <h2 class="products__title"><span style="font-size: 100%;">SẢN PHẨM NỔI BẬT</span></h2>
+                                <div class="grid wide">
+                                    <div class="home-product">
+                                        <div class="row sm-gutter">
+                                                <tr th:each="product: ${listProduct}">
+                                                    <div class="col l-2-4 m-4 c-6">
+                                                        <a href="#" class="home-product-item">
+                                                            <div>
+                                                                <img th:src="@{'/uploads/'+${product.image}}" class="img-circle ">
+                                                            </div>
+                                                            <h4 class="home-product-item__name">
+                                                                Bộ kem đặc trị vùng mắt Ohui Age Recovery Wrinkle Cut
+                                                                Serum.
+                                                            </h4>
+                                                            <div class="home-product-item__price">
+                                                                <span class="home-product-item__price-old">2.300.000đ</span><span class="home-product-item__price-current">2.070.000đ</span>
+                                                            </div>
+                                                            <div class="home-product-item__action">
+                                                                <span class="home-product-item__like home-product-item__like--liked">
+                                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                                                </span>
+                                                                <div class="home-product-item__rating">
+                                                                    <i
+                                                                            class="home-product-item__star--gold fas fa-star"
+                                                                    ></i>
+                                                                    <i
+                                                                            class="home-product-item__star--gold fas fa-star"
+                                                                    ></i>
+                                                                    <i
+                                                                            class="home-product-item__star--gold fas fa-star"
+                                                                    ></i>
+                                                                    <i
+                                                                            class="home-product-item__star--gold fas fa-star"
+                                                                    ></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="home-product-item__favourite">
+                                                                <i class="fas fa-check "></i>
+                                                                <span>Yêu thích</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </tr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://kyo.vn/shop?is_featured=1" class="button primary is-outline" >
+                                    <span>Xem thêm</span>
+                                    <i class="fa-solid fa-caret-down" aria-hidden="true" ></i>
+                                </a>
+                                <h2 class="products__title"><span style="font-size: 100%;">BLOG TIN TỨC</span></h2>
+
+
+                    <div class="row large-columns-3 medium-columns- small-columns-1 row-small has-shadow row-box-shadow-1" >
+                        <div class="col post-item" >
+                            <div class="col-inner">
+                                <div class="box box-shade dark box-text-bottom box-blog-post has-hover">
+                                    <div class="box-image" >
+                                        <div class="image-cover" style="padding-top:56%;">
+                                            <a href="https://kyo.vn/top-5-chai-nuoc-hoa-nu-mui-ngot-khien-chang-say-dam/" class="plain" aria-label="Top 5 Chai Nước Hoa Nữ Mùi Ngọt Khiến Chàng Say Đắm">
+                                                <img loading="lazy" decoding="async" width="300" height="300" src="https://kyo.vn/wp-content/uploads/2023/10/Top-5-Chai-Nuoc-Hoa-Nu-Mui-Ngot-Ngao-Khien-Chang-Say-Dam-1-1-300x300.png" class="attachment-medium size-medium wp-post-image" alt="" srcset="https://kyo.vn/wp-content/uploads/2023/10/Top-5-Chai-Nuoc-Hoa-Nu-Mui-Ngot-Ngao-Khien-Chang-Say-Dam-1-1-300x300.png 300w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-Chai-Nuoc-Hoa-Nu-Mui-Ngot-Ngao-Khien-Chang-Say-Dam-1-1-100x100.png 100w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-Chai-Nuoc-Hoa-Nu-Mui-Ngot-Ngao-Khien-Chang-Say-Dam-1-1-768x768.png 768w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-Chai-Nuoc-Hoa-Nu-Mui-Ngot-Ngao-Khien-Chang-Say-Dam-1-1-150x150.png 150w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-Chai-Nuoc-Hoa-Nu-Mui-Ngot-Ngao-Khien-Chang-Say-Dam-1-1.png 800w" sizes="(max-width: 300px) 100vw, 300px" />							</a>
+                                            <div class="shade"></div>  						</div>
+                                    </div>
+                                    <div class="box-text text-center" >
+                                        <div class="box-text-inner blog-post-inner">
+
+
+                                            <h5 class="post-title is-small uppercase">
+                                                <a href="https://kyo.vn/top-5-chai-nuoc-hoa-nu-mui-ngot-khien-chang-say-dam/" class="plain">Top 5 Chai Nước Hoa Nữ Mùi Ngọt Khiến Chàng Say Đắm</a>
+                                            </h5>
+                                            <div class="is-divider"></div>
+
+                                            <a href="https://kyo.vn/top-5-chai-nuoc-hoa-nu-mui-ngot-khien-chang-say-dam/" class="button  is-outline is-small mb-0">
+                                                Xem						</a>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="col post-item" >
+                        <div class="col-inner">
+                            <div class="box box-shade dark box-text-bottom box-blog-post has-hover">
+                                <div class="box-image" >
+                                    <div class="image-cover" style="padding-top:56%;">
+                                        <a href="https://kyo.vn/top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he/" class="plain" aria-label="Top 5 Chai Nước Hoa Mùi Thanh Mát Cho Nữ Vào Mùa Hè">
+                                            <img loading="lazy" decoding="async" width="300" height="300" src="https://kyo.vn/wp-content/uploads/2023/10/Top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he-1-300x300.png" class="attachment-medium size-medium wp-post-image" alt="" srcset="https://kyo.vn/wp-content/uploads/2023/10/Top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he-1-300x300.png 300w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he-1-100x100.png 100w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he-1-768x768.png 768w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he-1-150x150.png 150w, https://kyo.vn/wp-content/uploads/2023/10/Top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he-1.png 800w" sizes="(max-width: 300px) 100vw, 300px" />							</a>
+                                        <div class="shade"></div>  						</div>
+                                </div>
+                                <div class="box-text text-center" >
+                                    <div class="box-text-inner blog-post-inner">
+
+
+                                        <h5 class="post-title is-small uppercase">
+                                            <a href="https://kyo.vn/top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he/" class="plain">Top 5 Chai Nước Hoa Mùi Thanh Mát Cho Nữ Vào Mùa Hè</a>
+                                        </h5>
+                                        <div class="is-divider"></div>
+
+                                        <a href="https://kyo.vn/top-5-chai-nuoc-hoa-mui-thanh-mat-cho-nu-vao-mua-he/" class="button  is-outline is-small mb-0">
+                                            Xem						</a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="col post-item" >
+                        <div class="col-inner">
+                            <div class="box box-shade dark box-text-bottom box-blog-post has-hover">
+                                <div class="box-image" >
+                                    <div class="image-cover" style="padding-top:56%;">
+                                        <a href="https://kyo.vn/top-5-chai-nuoc-hoa-unisex-duoc-yeu-thich-nhat-hien-nay/" class="plain" aria-label="Top 5 Chai Nước Hoa Unisex Được Yêu Thích Nhất Hiện Nay">
+                                            <img loading="lazy" decoding="async" width="300" height="300" src="https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Unisex-Duoc-Yeu-Thich-Nhat-Nam-2023-2-300x300.png" class="attachment-medium size-medium wp-post-image" alt="" srcset="https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Unisex-Duoc-Yeu-Thich-Nhat-Nam-2023-2-300x300.png 300w, https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Unisex-Duoc-Yeu-Thich-Nhat-Nam-2023-2-100x100.png 100w, https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Unisex-Duoc-Yeu-Thich-Nhat-Nam-2023-2-150x150.png 150w, https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Unisex-Duoc-Yeu-Thich-Nhat-Nam-2023-2.png 500w" sizes="(max-width: 300px) 100vw, 300px" />							</a>
+                                        <div class="shade"></div>  						</div>
+                                </div>
+                                <div class="box-text text-center" >
+                                    <div class="box-text-inner blog-post-inner">
+
+
+                                        <h5 class="post-title is-small uppercase">
+                                            <a href="https://kyo.vn/top-5-chai-nuoc-hoa-unisex-duoc-yeu-thich-nhat-hien-nay/" class="plain">Top 5 Chai Nước Hoa Unisex Được Yêu Thích Nhất Hiện Nay</a>
+                                        </h5>
+                                        <div class="is-divider"></div>
+
+                                        <a href="https://kyo.vn/top-5-chai-nuoc-hoa-unisex-duoc-yeu-thich-nhat-hien-nay/" class="button  is-outline is-small mb-0">
+                                            Xem						</a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="col post-item" >
+                        <div class="col-inner">
+                            <div class="box box-shade dark box-text-bottom box-blog-post has-hover">
+                                <div class="box-image" >
+                                    <div class="image-cover" style="padding-top:56%;">
+                                        <a href="https://kyo.vn/top-3-chai-nuoc-hoa-unisex-kilian-hot-nhat-hien-nay/" class="plain" aria-label="Top 3 Chai Nước Hoa Unisex Kilian Hot Nhất Hiện Nay">
+                                            <img loading="lazy" decoding="async" width="300" height="300" src="https://kyo.vn/wp-content/uploads/2023/08/Kham-Pha-3-Chai-Nuoc-Hoa-Unisex-Kilian-Hot-Nhat-Hien-Nay-300x300.png" class="attachment-medium size-medium wp-post-image" alt="" srcset="https://kyo.vn/wp-content/uploads/2023/08/Kham-Pha-3-Chai-Nuoc-Hoa-Unisex-Kilian-Hot-Nhat-Hien-Nay-300x300.png 300w, https://kyo.vn/wp-content/uploads/2023/08/Kham-Pha-3-Chai-Nuoc-Hoa-Unisex-Kilian-Hot-Nhat-Hien-Nay-100x100.png 100w, https://kyo.vn/wp-content/uploads/2023/08/Kham-Pha-3-Chai-Nuoc-Hoa-Unisex-Kilian-Hot-Nhat-Hien-Nay-150x150.png 150w, https://kyo.vn/wp-content/uploads/2023/08/Kham-Pha-3-Chai-Nuoc-Hoa-Unisex-Kilian-Hot-Nhat-Hien-Nay-510x510.png 510w, https://kyo.vn/wp-content/uploads/2023/08/Kham-Pha-3-Chai-Nuoc-Hoa-Unisex-Kilian-Hot-Nhat-Hien-Nay.png 600w" sizes="(max-width: 300px) 100vw, 300px" />							</a>
+                                        <div class="shade"></div>  						</div>
+                                </div>
+                                <div class="box-text text-center" >
+                                    <div class="box-text-inner blog-post-inner">
+
+
+                                        <h5 class="post-title is-small uppercase">
+                                            <a href="https://kyo.vn/top-3-chai-nuoc-hoa-unisex-kilian-hot-nhat-hien-nay/" class="plain">Top 3 Chai Nước Hoa Unisex Kilian Hot Nhất Hiện Nay</a>
+                                        </h5>
+                                        <div class="is-divider"></div>
+
+                                        <a href="https://kyo.vn/top-3-chai-nuoc-hoa-unisex-kilian-hot-nhat-hien-nay/" class="button  is-outline is-small mb-0">
+                                            Xem						</a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="col post-item" >
+                        <div class="col-inner">
+                            <div class="box box-shade dark box-text-bottom box-blog-post has-hover">
+                                <div class="box-image" >
+                                    <div class="image-cover" style="padding-top:56%;">
+                                        <a href="https://kyo.vn/top-5-chai-nuoc-hoa-nu-huong-hoa-co-hot-nhat-hien-nay/" class="plain" aria-label="Top 5 Chai Nước Hoa Nữ Hương Hoa Cỏ Hot Nhất Hiện Nay">
+                                            <img loading="lazy" decoding="async" width="300" height="300" src="https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Nu-Huong-Hoa-Co-Hot-Nhat-2023-300x300.png" class="attachment-medium size-medium wp-post-image" alt="" srcset="https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Nu-Huong-Hoa-Co-Hot-Nhat-2023-300x300.png 300w, https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Nu-Huong-Hoa-Co-Hot-Nhat-2023-100x100.png 100w, https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Nu-Huong-Hoa-Co-Hot-Nhat-2023-150x150.png 150w, https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Nu-Huong-Hoa-Co-Hot-Nhat-2023-510x510.png 510w, https://kyo.vn/wp-content/uploads/2023/08/Top-5-Chai-Nuoc-Hoa-Nu-Huong-Hoa-Co-Hot-Nhat-2023.png 600w" sizes="(max-width: 300px) 100vw, 300px" />							</a>
+                                        <div class="shade"></div>  						</div>
+                                </div>
+                                <div class="box-text text-center" >
+                                    <div class="box-text-inner blog-post-inner">
+
+
+                                        <h5 class="post-title is-small uppercase">
+                                            <a href="https://kyo.vn/top-5-chai-nuoc-hoa-nu-huong-hoa-co-hot-nhat-hien-nay/" class="plain">Top 5 Chai Nước Hoa Nữ Hương Hoa Cỏ Hot Nhất Hiện Nay</a>
+                                        </h5>
+                                        <div class="is-divider"></div>
+
+                                        <a href="https://kyo.vn/top-5-chai-nuoc-hoa-nu-huong-hoa-co-hot-nhat-hien-nay/" class="button  is-outline is-small mb-0">
+                                            Xem						</a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="col post-item" >
+                        <div class="col-inner">
+                            <div class="box box-shade dark box-text-bottom box-blog-post has-hover">
+                                <div class="box-image" >
+                                    <div class="image-cover" style="padding-top:56%;">
+                                        <a href="https://kyo.vn/nhung-chai-nuoc-hoa-nam-hap-dan-nhat-moi-thoi-dai/" class="plain" aria-label="Những Chai Nước Hoa Nam Hấp Dẫn Nhất Mọi Thời Đại">
+                                            <img loading="lazy" decoding="async" width="300" height="300" src="https://kyo.vn/wp-content/uploads/2023/08/Cac-Chai-Nuoc-Hoa-Nam-Lam-Mua-Lam-Gio-Nam-2023-300x300.png" class="attachment-medium size-medium wp-post-image" alt="" srcset="https://kyo.vn/wp-content/uploads/2023/08/Cac-Chai-Nuoc-Hoa-Nam-Lam-Mua-Lam-Gio-Nam-2023-300x300.png 300w, https://kyo.vn/wp-content/uploads/2023/08/Cac-Chai-Nuoc-Hoa-Nam-Lam-Mua-Lam-Gio-Nam-2023-100x100.png 100w, https://kyo.vn/wp-content/uploads/2023/08/Cac-Chai-Nuoc-Hoa-Nam-Lam-Mua-Lam-Gio-Nam-2023-768x768.png 768w, https://kyo.vn/wp-content/uploads/2023/08/Cac-Chai-Nuoc-Hoa-Nam-Lam-Mua-Lam-Gio-Nam-2023-150x150.png 150w, https://kyo.vn/wp-content/uploads/2023/08/Cac-Chai-Nuoc-Hoa-Nam-Lam-Mua-Lam-Gio-Nam-2023.png 800w" sizes="(max-width: 300px) 100vw, 300px" />							</a>
+                                        <div class="shade"></div>  						</div>
+                                </div>
+                                <div class="box-text text-center" >
+                                    <div class="box-text-inner blog-post-inner">
+
+
+                                        <h5 class="post-title is-small uppercase">
+                                            <a href="https://kyo.vn/nhung-chai-nuoc-hoa-nam-hap-dan-nhat-moi-thoi-dai/" class="plain">Những Chai Nước Hoa Nam Hấp Dẫn Nhất Mọi Thời Đại</a>
+                                        </h5>
+                                        <div class="is-divider"></div>
+
+                                        <a href="https://kyo.vn/nhung-chai-nuoc-hoa-nam-hap-dan-nhat-moi-thoi-dai/" class="button  is-outline is-small mb-0">
+                                            Xem						</a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+                </div>
+        </div>
+
+
+</div>
+</div>
+
+
+<style>
+    #section_274014384 {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+    #section_274014384 .section-bg.bg-loaded {
+      background-image: url(https://kyo.vn/wp-content/uploads/2018/03/bg-tips.png);
+    }
+</style>
+</section>
+
+
+
+
+</div>
+
+
+
+</main>
+
+<footer id="footer" class="footer-wrapper">
+
+    <section class="section" id="section_68303983">
+        <div class="bg section-bg fill bg-fill bg-loaded bg-loaded" >
+
+
+
+
+
+        </div>
+
+
+
+        <div class="section-content relative">
+
+
+            <div id="gap-1573849190" class="gap-element clearfix" style="display:block; height:auto;">
+
+                <style>
+                    #gap-1573849190 {
+                      padding-top: 30px;
+                    }
+                </style>
+            </div>
+
+
+            <div class="row row-small"  id="row-1266253823">
+
+
+                <div id="col-790847724" class="col medium-3 small-12 large-3"  >
+                    <div class="col-inner"  >
+
+
+
+                        <p><span style="font-size: 100%; color: #333333; font-family: helvetica, arial, sans-serif;"><strong>KYO AUTHENTIC</strong></span></p>
+                        <div id="gtx-trans" style="position: absolute; left: -14px; top: 34.0625px;">
+                            <div class="gtx-trans-icon"> </div>
+                        </div>
+                        <div id="text-4136881771" class="text">
+
+
+                            <p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 90%;"><strong>CN1: </strong>12 Ngõ 86 Phố Chùa Hà, Cầu Giấy, Hà Nội (hoặc 12/12 Phố Nguyễn Văn Huyên)</span></p>
+
+                            <p><span style="font-size: 90%; font-family: arial, helvetica, sans-serif;"><strong>E-mail:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="543f2d3b3521203c313a203d37143339353d387a373b39">[email&#160;protected]</a></span></p>
+                            <p><span style="font-family: arial, helvetica, sans-serif; font-size: 90%;"><strong>Điện thoại:</strong> 024.66.737.999</span></p>
+                            <p><span style="font-family: arial, helvetica, sans-serif; font-size: 90%;"><strong>Hotline:</strong> 0975.436.989 / 0986.448.789</span></p>
+                            <p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 90%;"><strong>Mở cửa: </strong>Từ T2 đến CN, 9H - 22H</span></p>
+                            <p><span style="font-size: 90%;"><strong>Kyo Authentic</strong> - Hệ thống bán Mỹ phẩm chính hãng</span></p>
+
+                            <style>
+                                #text-4136881771 {
+                                  font-size: 1rem;
+                                  line-height: 1.28;
+                                }
+                            </style>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div id="col-1494602625" class="col medium-3 small-12 large-3"  >
+                    <div class="col-inner"  >
+
+
+
+                        <p><span style="font-size: 100%; color: #333333; font-family: helvetica, arial, sans-serif;"><strong>THÔNG TIN HỖ TRỢ</strong></span></p>
+                        <div id="gtx-trans" style="position: absolute; left: -14px; top: 34.0625px;">
+                            <div class="gtx-trans-icon"> </div>
+                        </div>
+                        <div id="text-1139760072" class="text">
+
+
+                            <p><a href="https://kyo.vn/gioi-thieu/">Giới thiệu</a></p>
+                            <p><a href="https://kyo.vn/lien-he/">Liên hệ</a></p>
+                            <p><a href="https://kyo.vn/huong-dan-mua-hang/">Hướng dẫn mua hàng</a></p>
+                            <p><a href="https://kyo.vn/theo-doi-don-hang/">Theo dõi đơn hàng</a></p>
+                            <p><a href="https://kyo.vn/doi-hang-va-tra-hang/">Hướng dẫn đổi trả hàng</a></p>
+                            <p><a href="https://kyo.vn/chinh-sach-van-chuyen/">Chính sách vận chuyển</a></p>
+                            <p><a href="https://kyo.vn/chinh-sach-bao-mat/">Chính sách bảo mật</a></p>
+                            <p><a href="https://kyo.vn/ban-buon-my-pham/">Bán buôn mỹ phẩm</a></p>
+
+                            <style>
+                                #text-1139760072 {
+                                  font-size: 0.96rem;
+                                  line-height: 1.75;
+                                }
+                            </style>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div id="col-840820781" class="col medium-3 small-12 large-3"  >
+                    <div class="col-inner"  >
+
+
+
+                        <p><span style="font-size: 100%; color: #333333; font-family: helvetica, arial, sans-serif;"><strong>DANH MỤC CHÍNH</strong></span></p>
+                        <div id="gtx-trans" style="position: absolute; left: -5px; top: 34.0625px;">
+                            <div class="gtx-trans-icon"> </div>
+                        </div>
+                        <div id="text-4191706461" class="text">
+                            <p><a href="https://kyo.vn/cham-soc-da/">Chăm Sóc Da</a></p>
+                            <p><a href="https://kyo.vn/qua-tang/">Quà Tặng</a></p>
+
+
+                            <style>
+                                #text-4191706461 {
+                                  font-size: 0.96rem;
+                                  line-height: 1.44;
+                                }
+                            </style>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div id="col-648646889" class="col pb-0 medium-3 small-12 large-3"  >
+                    <div class="col-inner"  >
+
+
+
+                        <p><span style="font-size: 100%; color: #333333; font-family: helvetica, arial, sans-serif;"><strong>THEO DÕI CHÚNG TÔI</strong></span></p>
+                        <div id="gtx-trans" style="position: absolute; left: -5px; top: 34.0625px;">
+                            <div class="gtx-trans-icon"> </div>
+                        </div>
+                        <div id="gap-1326255522" class="gap-element clearfix" style="display:block; height:auto;">
+
+                            <style>
+                                #gap-1326255522 {
+                                  padding-top: 0px;
+                                }
+                            </style>
+                        </div>
+
+
+
+                        <form id="sendy-c" accept-charset="utf-8" action="https://kyo.vn/sendy/subscribe" method="POST"><input id="email" name="email" type="email" placeholder="Email" /></p>
+                            <div style="display: none;"><input id="name" name="name" type="text" /> <label for="hp">HP</label><br /><input id="hp" name="hp" type="text" /></div>
+                            <p><input name="list" type="hidden" value="nX763u5d763lKHUAHGnPtlLCfg" /> <input name="subform" type="hidden" value="yes" /><input id="submit" name="submit" type="submit" value="Gửi" /></form>
+                        <div class="social-icons follow-icons hide-for-small" ><a href="fb.com/kyoauthentic" target="_blank" data-label="Facebook" class="icon primary button circle facebook " title="Theo dõi trên Facebook" aria-label="Theo dõi trên Facebook" rel="noopener nofollow" ><i class="fa-brands fa-facebook-f"></i></a><a href="#" target="_blank" data-label="Instagram" class="icon primary button circle instagram " title="Theo dõi trên Instagram" aria-label="Theo dõi trên Instagram" rel="noopener nofollow" ><i class="fa-brands fa-instagram"></i></a><a href="/cdn-cgi/l/email-protection#03687a6c6276776b666d776a6043646e626a6f2d606c6e" data-label="E-mail" target="_blank" class="icon primary button circle email " title="Gửi email cho chúng tôi" aria-label="Gửi email cho chúng tôi" rel="nofollow noopener"><i class="fa-solid fa-envelope"></i></a><a href="#" data-label="YouTube" target="_blank" class="icon primary button circle youtube " title="Theo dõi trên YouTube" aria-label="Theo dõi trên YouTube" rel="noopener nofollow" ><i class="fa-brands fa-youtube"></i></a></div>
+
+                        <div class="row row-collapse align-middle sm:justify-center"  id="row-1375433616">
+
+
+                            <div id="col-449093101" class="col pb-0 medium-7 small-5 large-7"  >
+                                <div class="col-inner"  >
+
+
+
+                                    <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1186689494">
+                                        <div class="img-inner dark" >
+                                            <img width="300" height="100" src="https://kyo.vn/wp-content/uploads/2017/07/dmca_logo.png" class="attachment-large size-large" alt="" decoding="async" loading="lazy" />
+                                        </div>
+
+                                        <style>
+                                            #image_1186689494 {
+                                              width: 100%;
+                                            }
+                                            @media (min-width:550px) {
+                                              #image_1186689494 {
+                                                width: 100%;
+                                              }
+                                            }
+                                        </style>
+                                    </div>
+
+
+
+                                </div>
+
+                                <style>
+                                    #col-449093101 > .col-inner {
+                                      padding: 0px 10px 0px 0px;
+                                    }
+                                </style>
+                            </div>
+
+
+
+                            <div id="col-500817595" class="col pb-0 medium-4 small-3 large-4"  >
+                                <div class="col-inner text-left"  >
+
+
+
+                                    <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_667703822">
+                                        <div class="img-inner dark" >
+                                            <img width="250" height="125" src="https://kyo.vn/wp-content/uploads/2021/09/dmca-badge.png" class="attachment-large size-large" alt="" decoding="async" loading="lazy" srcset="https://kyo.vn/wp-content/uploads/2021/09/dmca-badge.png 250w, https://kyo.vn/wp-content/uploads/2021/09/dmca-badge-247x125.png 247w" sizes="(max-width: 250px) 100vw, 250px" />
+                                        </div>
+
+                                        <style>
+                                            #image_667703822 {
+                                              width: 100%;
+                                            }
+                                        </style>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div id="gap-202429212" class="gap-element clearfix show-for-small" style="display:block; height:auto;">
+
+                            <style>
+                                #gap-202429212 {
+                                  padding-top: 20px;
+                                }
+                            </style>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <style>
+            #section_68303983 {
+              padding-top: 0px;
+              padding-bottom: 0px;
+              background-color: rgb(253, 149, 171);
+            }
+        </style>
+    </section>
+
+    <div class="absolute-footer dark medium-text-center small-text-center">
+        <div class="container clearfix">
+
+            <div class="footer-secondary pull-right">
+                <div class="payment-icons inline-block"><div class="payment-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 64 32">
+                    <path d="M10.781 7.688c-0.251-1.283-1.219-1.688-2.344-1.688h-8.376l-0.061 0.405c5.749 1.469 10.469 4.595 12.595 10.501l-1.813-9.219zM13.125 19.688l-0.531-2.781c-1.096-2.907-3.752-5.594-6.752-6.813l4.219 15.939h5.469l8.157-20.032h-5.501l-5.062 13.688zM27.72 26.061l3.248-20.061h-5.187l-3.251 20.061h5.189zM41.875 5.656c-5.125 0-8.717 2.72-8.749 6.624-0.032 2.877 2.563 4.469 4.531 5.439 2.032 0.968 2.688 1.624 2.688 2.499 0 1.344-1.624 1.939-3.093 1.939-2.093 0-3.219-0.251-4.875-1.032l-0.688-0.344-0.719 4.499c1.219 0.563 3.437 1.064 5.781 1.064 5.437 0.032 8.97-2.688 9.032-6.843 0-2.282-1.405-4-4.376-5.439-1.811-0.904-2.904-1.563-2.904-2.499 0-0.843 0.936-1.72 2.968-1.72 1.688-0.029 2.936 0.314 3.875 0.752l0.469 0.248 0.717-4.344c-1.032-0.406-2.656-0.844-4.656-0.844zM55.813 6c-1.251 0-2.189 0.376-2.72 1.688l-7.688 18.374h5.437c0.877-2.467 1.096-3 1.096-3 0.592 0 5.875 0 6.624 0 0 0 0.157 0.688 0.624 3h4.813l-4.187-20.061h-4zM53.405 18.938c0 0 0.437-1.157 2.064-5.594-0.032 0.032 0.437-1.157 0.688-1.907l0.374 1.72c0.968 4.781 1.189 5.781 1.189 5.781-0.813 0-3.283 0-4.315 0z"></path>
+                </svg>
+                </div><div class="payment-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 64 32">
+                    <path d="M42.667-0c-4.099 0-7.836 1.543-10.667 4.077-2.831-2.534-6.568-4.077-10.667-4.077-8.836 0-16 7.163-16 16s7.164 16 16 16c4.099 0 7.835-1.543 10.667-4.077 2.831 2.534 6.568 4.077 10.667 4.077 8.837 0 16-7.163 16-16s-7.163-16-16-16zM11.934 19.828l0.924-5.809-2.112 5.809h-1.188v-5.809l-1.056 5.809h-1.584l1.32-7.657h2.376v4.753l1.716-4.753h2.508l-1.32 7.657h-1.585zM19.327 18.244c-0.088 0.528-0.178 0.924-0.264 1.188v0.396h-1.32v-0.66c-0.353 0.528-0.924 0.792-1.716 0.792-0.442 0-0.792-0.132-1.056-0.396-0.264-0.351-0.396-0.792-0.396-1.32 0-0.792 0.218-1.364 0.66-1.716 0.614-0.44 1.364-0.66 2.244-0.66h0.66v-0.396c0-0.351-0.353-0.528-1.056-0.528-0.442 0-1.012 0.088-1.716 0.264 0.086-0.351 0.175-0.792 0.264-1.32 0.703-0.264 1.32-0.396 1.848-0.396 1.496 0 2.244 0.616 2.244 1.848 0 0.353-0.046 0.749-0.132 1.188-0.089 0.616-0.179 1.188-0.264 1.716zM24.079 15.076c-0.264-0.086-0.66-0.132-1.188-0.132s-0.792 0.177-0.792 0.528c0 0.177 0.044 0.31 0.132 0.396l0.528 0.264c0.792 0.442 1.188 1.012 1.188 1.716 0 1.409-0.838 2.112-2.508 2.112-0.792 0-1.366-0.044-1.716-0.132 0.086-0.351 0.175-0.836 0.264-1.452 0.703 0.177 1.188 0.264 1.452 0.264 0.614 0 0.924-0.175 0.924-0.528 0-0.175-0.046-0.308-0.132-0.396-0.178-0.175-0.396-0.308-0.66-0.396-0.792-0.351-1.188-0.924-1.188-1.716 0-1.407 0.792-2.112 2.376-2.112 0.792 0 1.32 0.045 1.584 0.132l-0.265 1.451zM27.512 15.208h-0.924c0 0.442-0.046 0.838-0.132 1.188 0 0.088-0.022 0.264-0.066 0.528-0.046 0.264-0.112 0.442-0.198 0.528v0.528c0 0.353 0.175 0.528 0.528 0.528 0.175 0 0.35-0.044 0.528-0.132l-0.264 1.452c-0.264 0.088-0.66 0.132-1.188 0.132-0.881 0-1.32-0.44-1.32-1.32 0-0.528 0.086-1.099 0.264-1.716l0.66-4.225h1.584l-0.132 0.924h0.792l-0.132 1.585zM32.66 17.32h-3.3c0 0.442 0.086 0.749 0.264 0.924 0.264 0.264 0.66 0.396 1.188 0.396s1.1-0.175 1.716-0.528l-0.264 1.584c-0.442 0.177-1.012 0.264-1.716 0.264-1.848 0-2.772-0.924-2.772-2.773 0-1.142 0.264-2.024 0.792-2.64 0.528-0.703 1.188-1.056 1.98-1.056 0.703 0 1.274 0.22 1.716 0.66 0.35 0.353 0.528 0.881 0.528 1.584 0.001 0.617-0.046 1.145-0.132 1.585zM35.3 16.132c-0.264 0.97-0.484 2.201-0.66 3.697h-1.716l0.132-0.396c0.35-2.463 0.614-4.4 0.792-5.809h1.584l-0.132 0.924c0.264-0.44 0.528-0.703 0.792-0.792 0.264-0.264 0.528-0.308 0.792-0.132-0.088 0.088-0.31 0.706-0.66 1.848-0.353-0.086-0.661 0.132-0.925 0.66zM41.241 19.697c-0.353 0.177-0.838 0.264-1.452 0.264-0.881 0-1.584-0.308-2.112-0.924-0.528-0.528-0.792-1.32-0.792-2.376 0-1.32 0.35-2.42 1.056-3.3 0.614-0.879 1.496-1.32 2.64-1.32 0.44 0 1.056 0.132 1.848 0.396l-0.264 1.584c-0.528-0.264-1.012-0.396-1.452-0.396-0.707 0-1.235 0.264-1.584 0.792-0.353 0.442-0.528 1.144-0.528 2.112 0 0.616 0.132 1.056 0.396 1.32 0.264 0.353 0.614 0.528 1.056 0.528 0.44 0 0.924-0.132 1.452-0.396l-0.264 1.717zM47.115 15.868c-0.046 0.264-0.066 0.484-0.066 0.66-0.088 0.442-0.178 1.035-0.264 1.782-0.088 0.749-0.178 1.254-0.264 1.518h-1.32v-0.66c-0.353 0.528-0.924 0.792-1.716 0.792-0.442 0-0.792-0.132-1.056-0.396-0.264-0.351-0.396-0.792-0.396-1.32 0-0.792 0.218-1.364 0.66-1.716 0.614-0.44 1.32-0.66 2.112-0.66h0.66c0.086-0.086 0.132-0.218 0.132-0.396 0-0.351-0.353-0.528-1.056-0.528-0.442 0-1.012 0.088-1.716 0.264 0-0.351 0.086-0.792 0.264-1.32 0.703-0.264 1.32-0.396 1.848-0.396 1.496 0 2.245 0.616 2.245 1.848 0.001 0.089-0.021 0.264-0.065 0.529zM49.69 16.132c-0.178 0.528-0.396 1.762-0.66 3.697h-1.716l0.132-0.396c0.35-1.935 0.614-3.872 0.792-5.809h1.584c0 0.353-0.046 0.66-0.132 0.924 0.264-0.44 0.528-0.703 0.792-0.792 0.35-0.175 0.614-0.218 0.792-0.132-0.353 0.442-0.574 1.056-0.66 1.848-0.353-0.086-0.66 0.132-0.925 0.66zM54.178 19.828l0.132-0.528c-0.353 0.442-0.838 0.66-1.452 0.66-0.707 0-1.188-0.218-1.452-0.66-0.442-0.614-0.66-1.232-0.66-1.848 0-1.142 0.308-2.067 0.924-2.773 0.44-0.703 1.056-1.056 1.848-1.056 0.528 0 1.056 0.264 1.584 0.792l0.264-2.244h1.716l-1.32 7.657h-1.585zM16.159 17.98c0 0.442 0.175 0.66 0.528 0.66 0.35 0 0.614-0.132 0.792-0.396 0.264-0.264 0.396-0.66 0.396-1.188h-0.397c-0.881 0-1.32 0.31-1.32 0.924zM31.076 15.076c-0.088 0-0.178-0.043-0.264-0.132h-0.264c-0.528 0-0.881 0.353-1.056 1.056h1.848v-0.396l-0.132-0.264c-0.001-0.086-0.047-0.175-0.133-0.264zM43.617 17.98c0 0.442 0.175 0.66 0.528 0.66 0.35 0 0.614-0.132 0.792-0.396 0.264-0.264 0.396-0.66 0.396-1.188h-0.396c-0.881 0-1.32 0.31-1.32 0.924zM53.782 15.076c-0.353 0-0.66 0.22-0.924 0.66-0.178 0.264-0.264 0.749-0.264 1.452 0 0.792 0.264 1.188 0.792 1.188 0.35 0 0.66-0.175 0.924-0.528 0.264-0.351 0.396-0.879 0.396-1.584-0.001-0.792-0.311-1.188-0.925-1.188z"></path>
+                </svg>
+                </div><div class="payment-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 64 32">
+                    <path d="M13.043 8.356c-0.46 0-0.873 0.138-1.24 0.413s-0.662 0.681-0.885 1.217c-0.223 0.536-0.334 1.112-0.334 1.727 0 0.568 0.119 0.99 0.358 1.265s0.619 0.413 1.141 0.413c0.508 0 1.096-0.131 1.765-0.393v1.327c-0.693 0.262-1.389 0.393-2.089 0.393-0.884 0-1.572-0.254-2.063-0.763s-0.736-1.229-0.736-2.161c0-0.892 0.181-1.712 0.543-2.462s0.846-1.32 1.452-1.709 1.302-0.584 2.089-0.584c0.435 0 0.822 0.038 1.159 0.115s0.7 0.217 1.086 0.421l-0.616 1.276c-0.369-0.201-0.673-0.333-0.914-0.398s-0.478-0.097-0.715-0.097zM19.524 12.842h-2.47l-0.898 1.776h-1.671l3.999-7.491h1.948l0.767 7.491h-1.551l-0.125-1.776zM19.446 11.515l-0.136-1.786c-0.035-0.445-0.052-0.876-0.052-1.291v-0.184c-0.153 0.408-0.343 0.84-0.569 1.296l-0.982 1.965h1.739zM27.049 12.413c0 0.711-0.257 1.273-0.773 1.686s-1.213 0.62-2.094 0.62c-0.769 0-1.389-0.153-1.859-0.46v-1.398c0.672 0.367 1.295 0.551 1.869 0.551 0.39 0 0.694-0.072 0.914-0.217s0.329-0.343 0.329-0.595c0-0.147-0.024-0.275-0.070-0.385s-0.114-0.214-0.201-0.309c-0.087-0.095-0.303-0.269-0.648-0.52-0.481-0.337-0.818-0.67-1.013-1s-0.293-0.685-0.293-1.066c0-0.439 0.108-0.831 0.324-1.176s0.523-0.614 0.922-0.806 0.857-0.288 1.376-0.288c0.755 0 1.446 0.168 2.073 0.505l-0.569 1.189c-0.543-0.252-1.044-0.378-1.504-0.378-0.289 0-0.525 0.077-0.71 0.23s-0.276 0.355-0.276 0.607c0 0.207 0.058 0.389 0.172 0.543s0.372 0.36 0.773 0.615c0.421 0.272 0.736 0.572 0.945 0.9s0.313 0.712 0.313 1.151zM33.969 14.618h-1.597l0.7-3.22h-2.46l-0.7 3.22h-1.592l1.613-7.46h1.597l-0.632 2.924h2.459l0.632-2.924h1.592l-1.613 7.46zM46.319 9.831c0 0.963-0.172 1.824-0.517 2.585s-0.816 1.334-1.415 1.722c-0.598 0.388-1.288 0.582-2.067 0.582-0.891 0-1.587-0.251-2.086-0.753s-0.749-1.198-0.749-2.090c0-0.902 0.172-1.731 0.517-2.488s0.82-1.338 1.425-1.743c0.605-0.405 1.306-0.607 2.099-0.607 0.888 0 1.575 0.245 2.063 0.735s0.73 1.176 0.73 2.056zM43.395 8.356c-0.421 0-0.808 0.155-1.159 0.467s-0.627 0.739-0.828 1.283-0.3 1.135-0.3 1.771c0 0.5 0.116 0.877 0.348 1.133s0.558 0.383 0.979 0.383 0.805-0.148 1.151-0.444c0.346-0.296 0.617-0.714 0.812-1.255s0.292-1.148 0.292-1.822c0-0.483-0.113-0.856-0.339-1.12-0.227-0.264-0.546-0.396-0.957-0.396zM53.427 14.618h-1.786l-1.859-5.644h-0.031l-0.021 0.163c-0.111 0.735-0.227 1.391-0.344 1.97l-0.757 3.511h-1.436l1.613-7.46h1.864l1.775 5.496h0.021c0.042-0.259 0.109-0.628 0.203-1.107s0.407-1.942 0.94-4.388h1.43l-1.613 7.461zM13.296 20.185c0 0.98-0.177 1.832-0.532 2.556s-0.868 1.274-1.539 1.652c-0.672 0.379-1.464 0.568-2.376 0.568h-2.449l1.678-7.68h2.15c0.977 0 1.733 0.25 2.267 0.751s0.801 1.219 0.801 2.154zM8.925 23.615c0.536 0 1.003-0.133 1.401-0.399s0.71-0.657 0.934-1.174c0.225-0.517 0.337-1.108 0.337-1.773 0-0.54-0.131-0.95-0.394-1.232s-0.64-0.423-1.132-0.423h-0.624l-1.097 5.001h0.575zM18.64 24.96h-4.436l1.678-7.68h4.442l-0.293 1.334h-2.78l-0.364 1.686h2.59l-0.299 1.334h-2.59l-0.435 1.98h2.78l-0.293 1.345zM20.509 24.96l1.678-7.68h1.661l-1.39 6.335h2.78l-0.294 1.345h-4.436zM26.547 24.96l1.694-7.68h1.656l-1.694 7.68h-1.656zM33.021 23.389c0.282-0.774 0.481-1.27 0.597-1.487l2.346-4.623h1.716l-4.061 7.68h-1.814l-0.689-7.68h1.602l0.277 4.623c0.015 0.157 0.022 0.39 0.022 0.699-0.007 0.361-0.018 0.623-0.033 0.788h0.038zM41.678 24.96h-4.437l1.678-7.68h4.442l-0.293 1.334h-2.78l-0.364 1.686h2.59l-0.299 1.334h-2.59l-0.435 1.98h2.78l-0.293 1.345zM45.849 22.013l-0.646 2.947h-1.656l1.678-7.68h1.949c0.858 0 1.502 0.179 1.933 0.536s0.646 0.881 0.646 1.571c0 0.554-0.15 1.029-0.451 1.426s-0.733 0.692-1.298 0.885l1.417 3.263h-1.803l-1.124-2.947h-0.646zM46.137 20.689h0.424c0.474 0 0.843-0.1 1.108-0.3s0.396-0.504 0.396-0.914c0-0.287-0.086-0.502-0.258-0.646s-0.442-0.216-0.812-0.216h-0.402l-0.456 2.076zM53.712 20.39l2.031-3.11h1.857l-3.355 4.744-0.646 2.936h-1.645l0.646-2.936-1.281-4.744h1.694l0.7 3.11z"></path>
+                </svg>
+                </div><div class="payment-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 64 32">
+                    <path d="M8.498 23.915h-1.588l1.322-5.127h-1.832l0.286-1.099h5.259l-0.287 1.099h-1.837l-1.323 5.127zM13.935 21.526l-0.62 2.389h-1.588l1.608-6.226h1.869c0.822 0 1.44 0.145 1.853 0.435 0.412 0.289 0.62 0.714 0.62 1.273 0 0.449-0.145 0.834-0.432 1.156-0.289 0.322-0.703 0.561-1.245 0.717l1.359 2.645h-1.729l-1.077-2.389h-0.619zM14.21 20.452h0.406c0.454 0 0.809-0.081 1.062-0.243s0.38-0.409 0.38-0.741c0-0.233-0.083-0.407-0.248-0.523s-0.424-0.175-0.778-0.175h-0.385l-0.438 1.682zM22.593 22.433h-2.462l-0.895 1.482h-1.666l3.987-6.252h1.942l0.765 6.252h-1.546l-0.125-1.482zM22.515 21.326l-0.134-1.491c-0.035-0.372-0.052-0.731-0.052-1.077v-0.154c-0.153 0.34-0.342 0.701-0.567 1.081l-0.979 1.64h1.732zM31.663 23.915h-1.78l-1.853-4.71h-0.032l-0.021 0.136c-0.111 0.613-0.226 1.161-0.343 1.643l-0.755 2.93h-1.432l1.608-6.226h1.859l1.77 4.586h0.021c0.042-0.215 0.109-0.524 0.204-0.924s0.406-1.621 0.937-3.662h1.427l-1.609 6.225zM38.412 22.075c0 0.593-0.257 1.062-0.771 1.407s-1.21 0.517-2.088 0.517c-0.768 0-1.386-0.128-1.853-0.383v-1.167c0.669 0.307 1.291 0.46 1.863 0.46 0.389 0 0.693-0.060 0.911-0.181s0.328-0.285 0.328-0.495c0-0.122-0.024-0.229-0.071-0.322s-0.114-0.178-0.2-0.257c-0.088-0.079-0.303-0.224-0.646-0.435-0.479-0.28-0.817-0.559-1.011-0.835-0.195-0.275-0.292-0.572-0.292-0.89 0-0.366 0.108-0.693 0.323-0.982 0.214-0.288 0.522-0.512 0.918-0.673 0.398-0.16 0.854-0.24 1.372-0.24 0.753 0 1.442 0.14 2.067 0.421l-0.567 0.993c-0.541-0.21-1.041-0.316-1.499-0.316-0.289 0-0.525 0.064-0.708 0.192-0.185 0.128-0.276 0.297-0.276 0.506 0 0.173 0.057 0.325 0.172 0.454 0.114 0.129 0.371 0.3 0.771 0.513 0.419 0.227 0.733 0.477 0.942 0.752 0.21 0.273 0.314 0.593 0.314 0.959zM41.266 23.915h-1.588l1.608-6.226h4.238l-0.281 1.082h-2.645l-0.412 1.606h2.463l-0.292 1.077h-2.463l-0.63 2.461zM49.857 23.915h-4.253l1.608-6.226h4.259l-0.281 1.082h-2.666l-0.349 1.367h2.484l-0.286 1.081h-2.484l-0.417 1.606h2.666l-0.28 1.091zM53.857 21.526l-0.62 2.389h-1.588l1.608-6.226h1.869c0.822 0 1.44 0.145 1.853 0.435s0.62 0.714 0.62 1.273c0 0.449-0.145 0.834-0.432 1.156-0.289 0.322-0.703 0.561-1.245 0.717l1.359 2.645h-1.729l-1.077-2.389h-0.619zM54.133 20.452h0.406c0.454 0 0.809-0.081 1.062-0.243s0.38-0.409 0.38-0.741c0-0.233-0.083-0.407-0.248-0.523s-0.424-0.175-0.778-0.175h-0.385l-0.438 1.682zM30.072 8.026c0.796 0 1.397 0.118 1.804 0.355s0.61 0.591 0.61 1.061c0 0.436-0.144 0.796-0.433 1.080-0.289 0.283-0.699 0.472-1.231 0.564v0.026c0.348 0.076 0.625 0.216 0.831 0.421 0.207 0.205 0.31 0.467 0.31 0.787 0 0.666-0.266 1.179-0.797 1.539s-1.267 0.541-2.206 0.541h-2.72l1.611-6.374h2.221zM28.111 13.284h0.938c0.406 0 0.726-0.084 0.957-0.253s0.347-0.403 0.347-0.701c0-0.471-0.317-0.707-0.954-0.707h-0.86l-0.428 1.661zM28.805 10.55h0.776c0.421 0 0.736-0.071 0.946-0.212s0.316-0.344 0.316-0.608c0-0.398-0.296-0.598-0.886-0.598h-0.792l-0.36 1.418zM37.242 12.883h-2.466l-0.897 1.517h-1.669l3.993-6.4h1.945l0.766 6.4h-1.548l-0.125-1.517zM37.163 11.749l-0.135-1.526c-0.035-0.381-0.053-0.748-0.053-1.103v-0.157c-0.153 0.349-0.342 0.718-0.568 1.107l-0.98 1.679h1.736zM46.325 14.4h-1.782l-1.856-4.822h-0.032l-0.021 0.14c-0.111 0.628-0.226 1.188-0.344 1.683l-0.756 3h-1.434l1.611-6.374h1.861l1.773 4.695h0.021c0.042-0.22 0.11-0.536 0.203-0.946s0.406-1.66 0.938-3.749h1.428l-1.611 6.374zM54.1 14.4h-1.763l-1.099-2.581-0.652 0.305-0.568 2.276h-1.59l1.611-6.374h1.596l-0.792 3.061 0.824-0.894 2.132-2.166h1.882l-3.097 3.052 1.517 3.322zM23.040 8.64c0-0.353-0.287-0.64-0.64-0.64h-14.080c-0.353 0-0.64 0.287-0.64 0.64v0c0 0.353 0.287 0.64 0.64 0.64h14.080c0.353 0 0.64-0.287 0.64-0.64v0zM19.2 11.2c0-0.353-0.287-0.64-0.64-0.64h-10.24c-0.353 0-0.64 0.287-0.64 0.64v0c0 0.353 0.287 0.64 0.64 0.64h10.24c0.353 0 0.64-0.287 0.64-0.64v0zM15.36 13.76c0-0.353-0.287-0.64-0.64-0.64h-6.4c-0.353 0-0.64 0.287-0.64 0.64v0c0 0.353 0.287 0.64 0.64 0.64h6.4c0.353 0 0.64-0.287 0.64-0.64v0z"></path>
+                </svg>
+                </div><div class="payment-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 64 32">
+                    <path d="M19.112 24.647l-1.249-4.1h-6.279l-1.249 4.1h-3.935l6.079-17.295h4.465l6.102 17.295h-3.935zM16.991 17.484c-1.155-3.715-1.804-5.816-1.949-6.303s-0.25-0.872-0.312-1.155c-0.259 1.005-1.002 3.491-2.227 7.457h4.488zM31.859 24.647h-3.652v-14.184h-4.677v-3.039h13.006v3.039h-4.677v14.184zM46.479 24.647l-4.147-13.513h-0.106c0.149 2.749 0.224 4.583 0.224 5.501v8.011h-3.263v-17.223h4.971l4.076 13.171h0.070l4.324-13.171h4.972v17.224h-3.405v-8.152c0-0.385 0.006-0.829 0.018-1.331s0.065-1.838 0.159-4.006h-0.106l-4.442 13.489h-3.346z"></path>
+                </svg>
+                </div></div>      </div>
+
+            <div class="footer-primary pull-left">
+                <div class="copyright-footer">
+                    <br>
+                    <span style="font-size:14px; color: gray"><strong>© Copyright 2015 - 2024 <strong><a href="https://kyo.vn">KYO.VN</a> </strong>• ĐKKD: 0110522922 • CÔNG TY TNHH KYO PACIFIC      </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline round hide-for-medium" id="top-link" aria-label="Lên đầu trang"><i class="fa-solid fa-angle-up"></i></a>
+
+</footer>
+
+</div>
+
+<div id="main-menu" class="mobile-sidebar no-scrollbar mfp-hide">
+
+
+    <div class="sidebar-menu no-scrollbar ">
+
+
+        <ul class="nav nav-sidebar nav-vertical nav-uppercase" data-tab="1">
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-9716"><a href="https://kyo.vn/" aria-current="page">TRANG CHỦ</a></li>
+
+
+            <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111637"><a href="https://kyo.vn/cham-soc-da/chong-nang/">CHỐNG NẮNG</a></li>
+
+
+            <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-111601"><a href="https://kyo.vn/cham-soc-da/">CHĂM SÓC DA</a>
+                <ul class="sub-menu nav-sidebar-ul children">
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111602"><a href="https://kyo.vn/cham-soc-da/mat-na/">Mặt Nạ</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111603"><a href="https://kyo.vn/cham-soc-da/tay-trang/">Tẩy Trang</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-111996"><a href="https://kyo.vn/cham-soc-da/xit-khoang/">Xịt Khoáng</a></li>
+                </ul>
+            </li>
+            <li class="label-hot menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-4686"><a href="https://kyo.vn/qua-tang/">QUÀ TẶNG</a></li>
+            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-113186"><a href="https://kyo.vn/tin-tuc/">TIN TỨC</a>
+                <ul class="sub-menu nav-sidebar-ul children">
+                    <li class="label-sale menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131925"><a href="https://kyo.vn/tin-tuc/sales/">SALES</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131921"><a href="https://kyo.vn/tin-tuc/lam-dep/">Làm đẹp</a></li>
+
+
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131922"><a href="https://kyo.vn/tin-tuc/qua-tang/">Quà Tặng</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131926"><a href="https://kyo.vn/tin-tuc/tuyen-dung/">Tuyển Dụng</a></li>
+                </ul>
+            </li>
+            <li class="html header-social-icons ml-0">
+                <div class="social-icons follow-icons" ><a href="https://www.facebook.com/kyoauthentic" target="_blank" data-label="Facebook" class="icon plain facebook " title="Theo dõi trên Facebook" aria-label="Theo dõi trên Facebook" rel="noopener nofollow" ><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.facebook.com/kyoauthentic" target="_blank" data-label="Instagram" class="icon plain instagram tooltip" title="Theo dõi trên Instagram" aria-label="Theo dõi trên Instagram" rel="noopener nofollow" ><i class="fa-brands fa-instagram"></i></a><a href="https://www.facebook.com/kyoauthentic" data-label="YouTube" target="_blank" class="icon plain youtube tooltip" title="Theo dõi trên YouTube" aria-label="Theo dõi trên YouTube" rel="noopener nofollow" ><i class="fa-brands fa-youtube"></i></a></div></li>
+        </ul>
+
+
+    </div>
+
+
+</div>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="data:text/javascript;base64,KGZ1bmN0aW9uKGQscyxpZCl7dmFyIGpzLGZqcz1kLmdldEVsZW1lbnRzQnlUYWdOYW1lKHMpWzBdO2lmKGQuZ2V0RWxlbWVudEJ5SWQoaWQpKXJldHVybjtqcz1kLmNyZWF0ZUVsZW1lbnQocyk7anMuaWQ9aWQ7anMuc3JjPSdodHRwczovL2Nvbm5lY3QuZmFjZWJvb2submV0L3ZpX1ZOL3Nkay94ZmJtbC5jdXN0b21lcmNoYXQuanMnO2Zqcy5wYXJlbnROb2RlLmluc2VydEJlZm9yZShqcyxmanMpfShkb2N1bWVudCwnc2NyaXB0JywnZmFjZWJvb2stanNzZGsnKSk=" defer></script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="1745181889031351">
+</div>
+<script src="data:text/javascript;base64,dmFyIG15Rm9ybT1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2VuZHktYyIpO215Rm9ybS5vbnN1Ym1pdD1mdW5jdGlvbigpe3ZhciB3PXdpbmRvdy5vcGVuKCJhYm91dDpibGFuayIsIlBvcHVwX1dpbmRvdyIsInRvb2xiYXI9MCxzY3JvbGxiYXJzPTAsbG9jYXRpb249MCxzdGF0dXNiYXI9MCxtZW51YmFyPTAscmVzaXphYmxlPTAsd2lkdGg9NDAwLGhlaWdodD0zMDAsbGVmdCA9IDMxMix0b3AgPSAyMzQiKTt0aGlzLnRhcmdldD0iUG9wdXBfV2luZG93IjtzZXRUaW1lb3V0KGZ1bmN0aW9uKCl7dy5jbG9zZSgpfSwzMDAwKX0=" defer></script>
+
+<script type="text/javascript" src="data:text/javascript;base64,alF1ZXJ5KGRvY3VtZW50KS5yZWFkeShmdW5jdGlvbigkKXskKCIuZGV2dm5fYmciKS5jbGljayhmdW5jdGlvbigpeyQoJ1tmb3I9ImZhYkNoZWNrYm94Il0nKS5jbGljaygpfSl9KQ==" defer></script>
+<div id="login-form-popup" class="lightbox-content mfp-hide">
+    <div class="woocommerce">
+        <div class="woocommerce-notices-wrapper"></div>
+        <div class="account-container lightbox-inner">
+
+
+            <div class="col2-set row row-divided row-large" id="customer_login">
+
+                <div class="col-1 large-6 col pb-0">
+
+
+                    <div class="account-login-inner">
+
+                        <h3 class="uppercase">Đăng nhập</h3>
+
+                        <form class="woocommerce-form woocommerce-form-login login" method="post">
+
+
+                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="username">Tên tài khoản hoặc địa chỉ email&nbsp;<span class="required">*</span></label>
+                                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="" />					</p>
+                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="password">Mật khẩu&nbsp;<span class="required">*</span></label>
+                                <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" />
+                            </p>
+
+
+                            <p class="form-row">
+                                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                                    <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span>Ghi nhớ mật khẩu</span>
+                                </label>
+                                <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="613a2c7055" /><input type="hidden" name="_wp_http_referer" value="/?gad_source=1&#038;gclid=CjwKCAjwte-vBhBFEiwAQSv_xe4zaJ21PejYolcGzt2L0XIOH4BEbUit-Ue8JhiBedClDkuRGc-oqRoCk0sQAvD_BwE" />						<button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="Đăng nhập">Đăng nhập</button>
+                            </p>
+                            <p class="woocommerce-LostPassword lost_password">
+                                <a href="https://kyo.vn/tai-khoan/Quên%20mật%20khẩu/">Quên mật khẩu?</a>
+                            </p>
+
+
+                        </form>
+                    </div>
+
+
+                </div>
+
+                <div class="col-2 large-6 col pb-0">
+
+                    <div class="account-register-inner">
+
+                        <h3 class="uppercase">Đăng ký</h3>
+
+                        <form method="post" class="woocommerce-form woocommerce-form-register register"  >
+
+
+
+                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="reg_email">Địa chỉ email&nbsp;<span class="required">*</span></label>
+                                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />					</p>
+
+
+                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="reg_password">Mật khẩu&nbsp;<span class="required">*</span></label>
+                                <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
+                            </p>
+
+
+                            <input type="hidden" name="wc_order_attribution_source_type" value="" /><input type="hidden" name="wc_order_attribution_referrer" value="" /><input type="hidden" name="wc_order_attribution_utm_campaign" value="" /><input type="hidden" name="wc_order_attribution_utm_source" value="" /><input type="hidden" name="wc_order_attribution_utm_medium" value="" /><input type="hidden" name="wc_order_attribution_utm_content" value="" /><input type="hidden" name="wc_order_attribution_utm_id" value="" /><input type="hidden" name="wc_order_attribution_utm_term" value="" /><input type="hidden" name="wc_order_attribution_session_entry" value="" /><input type="hidden" name="wc_order_attribution_session_start_time" value="" /><input type="hidden" name="wc_order_attribution_session_pages" value="" /><input type="hidden" name="wc_order_attribution_session_count" value="" /><input type="hidden" name="wc_order_attribution_user_agent" value="" /><div class="woocommerce-privacy-policy-text"></div>
+                            <p class="woocommerce-form-row form-row">
+                                <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="25e885df29" /><input type="hidden" name="_wp_http_referer" value="/?gad_source=1&#038;gclid=CjwKCAjwte-vBhBFEiwAQSv_xe4zaJ21PejYolcGzt2L0XIOH4BEbUit-Ue8JhiBedClDkuRGc-oqRoCk0sQAvD_BwE" />						<button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Đăng ký">Đăng ký</button>
+                            </p>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script type='text/javascript' src="data:text/javascript;base64,KGZ1bmN0aW9uKCl7dmFyIGM9ZG9jdW1lbnQuYm9keS5jbGFzc05hbWU7Yz1jLnJlcGxhY2UoL3dvb2NvbW1lcmNlLW5vLWpzLywnd29vY29tbWVyY2UtanMnKTtkb2N1bWVudC5ib2R5LmNsYXNzTmFtZT1jfSkoKQ==" defer></script>
+<style id='global-styles-inline-css' type='text/css'>
+    body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--primary: #ee3880;--wp--preset--color--secondary: #ee3b82;--wp--preset--color--success: #0a0a0a;--wp--preset--color--alert: #b20000;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}body { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: none;}.wp-element-button, .wp-block-button__link{background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-color{color: var(--wp--preset--color--primary) !important;}.has-secondary-color{color: var(--wp--preset--color--secondary) !important;}.has-success-color{color: var(--wp--preset--color--success) !important;}.has-alert-color{color: var(--wp--preset--color--alert) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-background-color{background-color: var(--wp--preset--color--primary) !important;}.has-secondary-background-color{background-color: var(--wp--preset--color--secondary) !important;}.has-success-background-color{background-color: var(--wp--preset--color--success) !important;}.has-alert-background-color{background-color: var(--wp--preset--color--alert) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-border-color{border-color: var(--wp--preset--color--primary) !important;}.has-secondary-border-color{border-color: var(--wp--preset--color--secondary) !important;}.has-success-border-color{border-color: var(--wp--preset--color--success) !important;}.has-alert-border-color{border-color: var(--wp--preset--color--alert) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/contact-form-7/includes/swv/js/index.js" id="swv-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="contact-form-7-js-extra" src="data:text/javascript;base64,dmFyIHdwY2Y3PXsiYXBpIjp7InJvb3QiOiJodHRwczpcL1wva3lvLnZuXC93cC1qc29uXC8iLCJuYW1lc3BhY2UiOiJjb250YWN0LWZvcm0tN1wvdjEifSwiY2FjaGVkIjoiMSJ9" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/contact-form-7/includes/js/index.js" id="contact-form-7-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="quick-search-script-js-extra" src="data:text/javascript;base64,dmFyIHF1aWNrX3NlYXJjaF9hcnJheT17ImNvZGUiOiJXeHlKcmFlVzh1ZG00aUxDSnJlVzh1ZG00aVhRPT0ifQ==" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/devvn-quick-search/assets/js/quick-search-script.js" id="quick-search-script-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/devvn-woocommerce-reviews/library/magnific-popup/magnific-popup.js" id="magnific-popup-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/devvn-woocommerce-reviews/library/owl/owl.carousel.min.js" id="owl.carousel-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/devvn-woocommerce-reviews/library/masonry/masonry.pkgd.min.js" id="masonry.pkgd-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="devvn-shortcode-reviews-js-extra" src="data:text/javascript;base64,dmFyIGRldnZuX3Nob3J0Y29kZV9yZXZpZXdzPXsiYWpheF91cmwiOiJodHRwczpcL1wva3lvLnZuXC93cC1hZG1pblwvYWRtaW4tYWpheC5waHAiLCJpbWdfc2l6ZSI6IjUxMjAwMCIsImltZ19zaXplX3RleHQiOiI1MDAgS0IiLCJjbXRfbGVuZ3RoIjoiMTAiLCJudW1iZXJfaW1nX3VwbG9hZCI6IjMiLCJzdGFyXzEiOiJSXHUxZWE1dCB0XHUxZWM3Iiwic3Rhcl8yIjoiS2hcdTAwZjRuZyB0XHUxZWM3Iiwic3Rhcl8zIjoiVHJ1bmcgYlx1MDBlY25oIiwic3Rhcl80IjoiVFx1MWVkMXQiLCJzdGFyXzUiOiJUdXlcdTFlYzd0IHZcdTFlZGRpIiwibmFtZV9yZXF1aXJlZF90ZXh0IjoiVFx1MDBlYW4gbFx1MDBlMCBiXHUxZWFmdCBidVx1MWVkOWMhIiwiZW1haWxfcmVxdWlyZWRfdGV4dCI6IkVtYWlsIGxcdTAwZTAgYlx1MWVhZnQgYnVcdTFlZDljISIsInBob25lX3JlcXVpcmVkX3RleHQiOiJTXHUxZWQxIFx1MDExMWlcdTFlYzduIHRob1x1MWVhMWkgbFx1MDBlMCBiXHUxZWFmdCBidVx1MWVkOWMhIiwiY210X3JlcXVpcmVkX3RleHQiOiJOXHUxZWQ5aSBkdW5nIGJcdTAwZWNuaCBsdVx1MWVhZG4gbFx1MDBlMCBiXHUxZWFmdCBidVx1MWVkOWMhIiwibWlubGVuZ3RoX3RleHQiOiJUXHUxZWQxaSB0aGlcdTFlYzN1IDEwIGtcdTAwZmQgdFx1MWVmMSIsIm1pbmxlbmd0aF90ZXh0MiI6ImtcdTAwZmQgdFx1MWVmMSAoVFx1MWVkMWkgdGhpXHUxZWMzdSAxMCkiLCJmaWxlX2Zvcm1hdF90ZXh0IjoiSFx1MDBlY25oIFx1MWVhM25oIGtoXHUwMGY0bmcgXHUwMTExXHUwMGZhbmcgXHUwMTExXHUxZWNibmggZFx1MWVhMW5nLiBDaFx1MWVjOSBjaFx1MWVhNXAgbmhcdTFlYWRuIGpwZ1wvcG5nXC9naWYiLCJmaWxlX3NpemVfdGV4dCI6IkhcdTAwZWNuaCBcdTFlYTNuaCBxdVx1MDBlMSBsXHUxZWRibi4gQ2hcdTFlYzkgbmhcdTFlZWZuZyBcdTFlYTNuaCA8PSA1MDAgS0IgXHUwMTExXHUwMWIwXHUxZWUzYyBwaFx1MDBlOXAgdFx1MWVhM2kgbFx1MDBlYW4iLCJmaWxlX2xlbmd0aF90ZXh0IjoiQ2hcdTFlYzkgY2hvIHBoXHUwMGU5cCB0XHUxZWEzaSBsXHUwMGVhbiAzIFx1MWVhM25oIiwicmV2aWV3X3N1Y2Nlc3MiOiJcdTAxMTBcdTAwZTFuaCBnaVx1MDBlMSB0aFx1MDBlMG5oIGNcdTAwZjRuZyEiLCJ2aWV0bmFtcGhvbmUiOiIxIiwiZGlzYWJsZV9vd2xfc2xpZGVyIjoiMCIsImVuYWJsZV9pbWdfcG9wdXAiOiIwIiwiY29kZSI6Ild4eUpyYWVXOHVkbTRpTENKc2FYTmhMblp1SWl3aWQzZDNMbXQ1Ynk1MmJpSXNJbmQzZHk1c2FYTmhMblp1SWwwPSJ9" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/devvn-woocommerce-reviews/js/devvn-shortcode-reviews.js" id="devvn-shortcode-reviews-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="woocommerce-js-extra" src="data:text/javascript;base64,dmFyIHdvb2NvbW1lcmNlX3BhcmFtcz17ImFqYXhfdXJsIjoiXC93cC1hZG1pblwvYWRtaW4tYWpheC5waHAiLCJ3Y19hamF4X3VybCI6IlwvP3djLWFqYXg9JSVlbmRwb2ludCUlIn0=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js" id="woocommerce-js" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js" id="sourcebuster-js-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wc-order-attribution-js-extra" src="data:text/javascript;base64,dmFyIHdjX29yZGVyX2F0dHJpYnV0aW9uPXsicGFyYW1zIjp7ImxpZmV0aW1lIjoxLjBlLTUsInNlc3Npb24iOjMwLCJhamF4dXJsIjoiaHR0cHM6XC9cL2t5by52blwvd3AtYWRtaW5cL2FkbWluLWFqYXgucGhwIiwicHJlZml4Ijoid2Nfb3JkZXJfYXR0cmlidXRpb25fIiwiYWxsb3dUcmFja2luZyI6ITB9LCJmaWVsZHMiOnsic291cmNlX3R5cGUiOiJjdXJyZW50LnR5cCIsInJlZmVycmVyIjoiY3VycmVudF9hZGQucmYiLCJ1dG1fY2FtcGFpZ24iOiJjdXJyZW50LmNtcCIsInV0bV9zb3VyY2UiOiJjdXJyZW50LnNyYyIsInV0bV9tZWRpdW0iOiJjdXJyZW50Lm1kbSIsInV0bV9jb250ZW50IjoiY3VycmVudC5jbnQiLCJ1dG1faWQiOiJjdXJyZW50LmlkIiwidXRtX3Rlcm0iOiJjdXJyZW50LnRybSIsInNlc3Npb25fZW50cnkiOiJjdXJyZW50X2FkZC5lcCIsInNlc3Npb25fc3RhcnRfdGltZSI6ImN1cnJlbnRfYWRkLmZkIiwic2Vzc2lvbl9wYWdlcyI6InNlc3Npb24ucGdzIiwic2Vzc2lvbl9jb3VudCI6InVkYXRhLnZzdCIsInVzZXJfYWdlbnQiOiJ1ZGF0YS51YWcifX0=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js" id="wc-order-attribution-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/underscore.min.js" id="underscore-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wp-util-js-extra" src="data:text/javascript;base64,dmFyIF93cFV0aWxTZXR0aW5ncz17ImFqYXgiOnsidXJsIjoiXC93cC1hZG1pblwvYWRtaW4tYWpheC5waHAifX0=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/wp-util.min.js" id="wp-util-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wp-api-request-js-extra" src="data:text/javascript;base64,dmFyIHdwQXBpU2V0dGluZ3M9eyJyb290IjoiaHR0cHM6XC9cL2t5by52blwvd3AtanNvblwvIiwibm9uY2UiOiJmYTYyZmZlMGJjIiwidmVyc2lvblN0cmluZyI6IndwXC92MlwvIn0=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/api-request.min.js" id="wp-api-request-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js" id="wp-polyfill-inert-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/dist/vendor/regenerator-runtime.min.js" id="regenerator-runtime-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/dist/vendor/wp-polyfill.min.js" id="wp-polyfill-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/dist/hooks.min.js" id="wp-hooks-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/dist/i18n.min.js" id="wp-i18n-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wp-i18n-js-after" src="data:text/javascript;base64,d3AuaTE4bi5zZXRMb2NhbGVEYXRhKHsndGV4dCBkaXJlY3Rpb25cdTAwMDRsdHInOlsnbHRyJ119KQ==" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/dist/url.min.js" id="wp-url-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wp-api-fetch-js-translations" src="data:text/javascript;base64,KGZ1bmN0aW9uKGRvbWFpbix0cmFuc2xhdGlvbnMpe3ZhciBsb2NhbGVEYXRhPXRyYW5zbGF0aW9ucy5sb2NhbGVfZGF0YVtkb21haW5dfHx0cmFuc2xhdGlvbnMubG9jYWxlX2RhdGEubWVzc2FnZXM7bG9jYWxlRGF0YVsiIl0uZG9tYWluPWRvbWFpbjt3cC5pMThuLnNldExvY2FsZURhdGEobG9jYWxlRGF0YSxkb21haW4pfSkoImRlZmF1bHQiLHsidHJhbnNsYXRpb24tcmV2aXNpb24tZGF0ZSI6IjIwMjMtMDctMTUgMTU6MzA6NTArMDAwMCIsImdlbmVyYXRvciI6Ikdsb3RQcmVzc1wvNC4wLjAtYWxwaGEuOSIsImRvbWFpbiI6Im1lc3NhZ2VzIiwibG9jYWxlX2RhdGEiOnsibWVzc2FnZXMiOnsiIjp7ImRvbWFpbiI6Im1lc3NhZ2VzIiwicGx1cmFsLWZvcm1zIjoibnBsdXJhbHM9MTsgcGx1cmFsPTA7IiwibGFuZyI6InZpX1ZOIn0sIlRoZSByZXNwb25zZSBpcyBub3QgYSB2YWxpZCBKU09OIHJlc3BvbnNlLiI6WyJQaFx1MWVhM24gaFx1MWVkM2kga2hcdTAwZjRuZyBwaFx1MWVhM2kgbFx1MDBlMCBtXHUxZWQ5dCBKU09OIGhcdTFlZTNwIGxcdTFlYzcuIl0sIkFuIHVua25vd24gZXJyb3Igb2NjdXJyZWQuIjpbIkNcdTAwZjMgbFx1MWVkN2kgblx1MDBlMG8gXHUwMTExXHUwMGYzIFx1MDExMVx1MDBlMyB4XHUxZWEzeSByYS4iXSwiTWVkaWEgdXBsb2FkIGZhaWxlZC4gSWYgdGhpcyBpcyBhIHBob3RvIG9yIGEgbGFyZ2UgaW1hZ2UsIHBsZWFzZSBzY2FsZSBpdCBkb3duIGFuZCB0cnkgYWdhaW4uIjpbIlRcdTFlYTNpIGxcdTAwZWFuIG1lZGlhIGtoXHUwMGY0bmcgdGhcdTAwZTBuaCBjXHUwMGY0bmcuIE5cdTFlYmZ1IFx1MDExMVx1MDBlMnkgbFx1MDBlMCBoXHUwMGVjbmggXHUxZWEzbmggY1x1MDBmMyBrXHUwMGVkY2ggdGhcdTAxYjBcdTFlZGJjIGxcdTFlZGJuLCB2dWkgbFx1MDBmMm5nIHRodSBuaFx1MWVjZiBuXHUwMGYzIHh1XHUxZWQxbmcgdlx1MDBlMCB0aFx1MWVlZCBsXHUxZWExaS4iXSwiWW91IGFyZSBwcm9iYWJseSBvZmZsaW5lLiI6WyJDXHUwMGYzIHRoXHUxZWMzIGJcdTFlYTFuIFx1MDExMWFuZyBuZ29cdTFlYTFpIHR1eVx1MWViZm4uIl19fSwiY29tbWVudCI6eyJyZWZlcmVuY2UiOiJ3cC1pbmNsdWRlc1wvanNcL2Rpc3RcL2FwaS1mZXRjaC5qcyJ9fSk=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/dist/api-fetch.min.js" id="wp-api-fetch-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wp-api-fetch-js-after" src="data:text/javascript;base64,d3AuYXBpRmV0Y2gudXNlKHdwLmFwaUZldGNoLmNyZWF0ZVJvb3RVUkxNaWRkbGV3YXJlKCJodHRwczovL2t5by52bi93cC1qc29uLyIpKTt3cC5hcGlGZXRjaC5ub25jZU1pZGRsZXdhcmU9d3AuYXBpRmV0Y2guY3JlYXRlTm9uY2VNaWRkbGV3YXJlKCJmYTYyZmZlMGJjIik7d3AuYXBpRmV0Y2gudXNlKHdwLmFwaUZldGNoLm5vbmNlTWlkZGxld2FyZSk7d3AuYXBpRmV0Y2gudXNlKHdwLmFwaUZldGNoLm1lZGlhVXBsb2FkTWlkZGxld2FyZSk7d3AuYXBpRmV0Y2gubm9uY2VFbmRwb2ludD0iaHR0cHM6Ly9reW8udm4vd3AtYWRtaW4vYWRtaW4tYWpheC5waHA/YWN0aW9uPXJlc3Qtbm9uY2Ui" defer></script>
+<script type="text/javascript" id="woo-variation-swatches-js-extra" src="data:text/javascript;base64,dmFyIHdvb192YXJpYXRpb25fc3dhdGNoZXNfb3B0aW9ucz17InNob3dfdmFyaWF0aW9uX2xhYmVsIjoiMSIsImNsZWFyX29uX3Jlc2VsZWN0IjoiIiwidmFyaWF0aW9uX2xhYmVsX3NlcGFyYXRvciI6IjoiLCJpc19tb2JpbGUiOiIxIiwic2hvd192YXJpYXRpb25fc3RvY2siOiIiLCJzdG9ja19sYWJlbF90aHJlc2hvbGQiOiI1IiwiY2FydF9yZWRpcmVjdF9hZnRlcl9hZGQiOiJubyIsImVuYWJsZV9hamF4X2FkZF90b19jYXJ0IjoieWVzIiwiY2FydF91cmwiOiJodHRwczpcL1wva3lvLnZuXC9naW8taGFuZ1wvIiwiaXNfY2FydCI6IiJ9" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/woo-variation-swatches/assets/js/frontend.min.js" id="woo-variation-swatches-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/hoverIntent.min.js" id="hoverIntent-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="flatsome-js-js-extra" src="data:text/javascript;base64,dmFyIGZsYXRzb21lVmFycz17InRoZW1lIjp7InZlcnNpb24iOiIzLjE4LjUifSwiYWpheHVybCI6Imh0dHBzOlwvXC9reW8udm5cL3dwLWFkbWluXC9hZG1pbi1hamF4LnBocCIsInJ0bCI6IiIsInN0aWNreV9oZWlnaHQiOiI2MiIsInN0aWNreUhlYWRlckhlaWdodCI6IjAiLCJzY3JvbGxQYWRkaW5nVG9wIjoiMCIsImFzc2V0c191cmwiOiJodHRwczpcL1wva3lvLnZuXC93cC1jb250ZW50XC90aGVtZXNcL2ZsYXRzb21lXC9hc3NldHNcLyIsImxpZ2h0Ym94Ijp7ImNsb3NlX21hcmt1cCI6IjxidXR0b24gdGl0bGU9XCIldGl0bGUlXCIgdHlwZT1cImJ1dHRvblwiIGNsYXNzPVwibWZwLWNsb3NlXCI+PHN2ZyB4bWxucz1cImh0dHA6XC9cL3d3dy53My5vcmdcLzIwMDBcL3N2Z1wiIHdpZHRoPVwiMjhcIiBoZWlnaHQ9XCIyOFwiIHZpZXdCb3g9XCIwIDAgMjQgMjRcIiBmaWxsPVwibm9uZVwiIHN0cm9rZT1cImN1cnJlbnRDb2xvclwiIHN0cm9rZS13aWR0aD1cIjJcIiBzdHJva2UtbGluZWNhcD1cInJvdW5kXCIgc3Ryb2tlLWxpbmVqb2luPVwicm91bmRcIiBjbGFzcz1cImZlYXRoZXIgZmVhdGhlci14XCI+PGxpbmUgeDE9XCIxOFwiIHkxPVwiNlwiIHgyPVwiNlwiIHkyPVwiMThcIj48XC9saW5lPjxsaW5lIHgxPVwiNlwiIHkxPVwiNlwiIHgyPVwiMThcIiB5Mj1cIjE4XCI+PFwvbGluZT48XC9zdmc+PFwvYnV0dG9uPiIsImNsb3NlX2J0bl9pbnNpZGUiOiExfSwidXNlciI6eyJjYW5fZWRpdF9wYWdlcyI6ITF9LCJpMThuIjp7Im1haW5NZW51IjoiTWVudSBjaFx1MDBlZG5oIiwidG9nZ2xlQnV0dG9uIjoiQ2h1eVx1MWVjM24gXHUwMTExXHUxZWQ1aSJ9LCJvcHRpb25zIjp7ImNvb2tpZV9ub3RpY2VfdmVyc2lvbiI6IjEiLCJzd2F0Y2hlc19sYXlvdXQiOiExLCJzd2F0Y2hlc19kaXNhYmxlX2Rlc2VsZWN0IjohMSwic3dhdGNoZXNfYm94X3NlbGVjdF9ldmVudCI6ITEsInN3YXRjaGVzX2JveF9iZWhhdmlvcl9zZWxlY3RlZCI6ITEsInN3YXRjaGVzX2JveF91cGRhdGVfdXJscyI6IjEiLCJzd2F0Y2hlc19ib3hfcmVzZXQiOiExLCJzd2F0Y2hlc19ib3hfcmVzZXRfbGltaXRlZCI6ITEsInN3YXRjaGVzX2JveF9yZXNldF9leHRlbnQiOiExLCJzd2F0Y2hlc19ib3hfcmVzZXRfdGltZSI6MzAwLCJzZWFyY2hfcmVzdWx0X2xhdGVuY3kiOiIwIn0sImlzX21pbmlfY2FydF9yZXZlYWwiOiIxIn0=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/themes/flatsome/assets/js/flatsome.js" id="flatsome-js-js" defer data-deferred="1"></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/themes/flatsome/assets/js/woocommerce.js" id="flatsome-theme-woocommerce-js-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wc-cart-fragments-js-extra" src="data:text/javascript;base64,dmFyIHdjX2NhcnRfZnJhZ21lbnRzX3BhcmFtcz17ImFqYXhfdXJsIjoiXC93cC1hZG1pblwvYWRtaW4tYWpheC5waHAiLCJ3Y19hamF4X3VybCI6IlwvP3djLWFqYXg9JSVlbmRwb2ludCUlIiwiY2FydF9oYXNoX2tleSI6IndjX2NhcnRfaGFzaF84YmE4MTZkZDQ2NThjMzZjNTAzNGIzODMxOWRjMWVhMSIsImZyYWdtZW50X25hbWUiOiJ3Y19mcmFnbWVudHNfOGJhODE2ZGQ0NjU4YzM2YzUwMzRiMzgzMTlkYzFlYTEiLCJyZXF1ZXN0X3RpbWVvdXQiOiI1MDAwIn0=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js" id="wc-cart-fragments-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" id="zxcvbn-async-js-extra" src="data:text/javascript;base64,dmFyIF96eGN2Ym5TZXR0aW5ncz17InNyYyI6Imh0dHBzOlwvXC9reW8udm5cL3dwLWluY2x1ZGVzXC9qc1wvenhjdmJuLm1pbi5qcyJ9" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-includes/js/zxcvbn-async.min.js" id="zxcvbn-async-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="password-strength-meter-js-extra" src="data:text/javascript;base64,dmFyIHB3c0wxMG49eyJ1bmtub3duIjoiTVx1MWVhZHQga2hcdTFlYTl1IG1cdTFlYTFuaCBraFx1MDBmNG5nIHhcdTAwZTFjIFx1MDExMVx1MWVjYm5oIiwic2hvcnQiOiJSXHUxZWE1dCB5XHUxZWJmdSIsImJhZCI6IllcdTFlYmZ1IiwiZ29vZCI6IlRydW5nIGJcdTAwZWNuaCIsInN0cm9uZyI6Ik1cdTFlYTFuaCIsIm1pc21hdGNoIjoiTVx1MWVhZHQga2hcdTFlYTl1IGtoXHUwMGY0bmcga2hcdTFlZGJwIn0=" defer></script>
+<script type="text/javascript" id="password-strength-meter-js-translations" src="data:text/javascript;base64,KGZ1bmN0aW9uKGRvbWFpbix0cmFuc2xhdGlvbnMpe3ZhciBsb2NhbGVEYXRhPXRyYW5zbGF0aW9ucy5sb2NhbGVfZGF0YVtkb21haW5dfHx0cmFuc2xhdGlvbnMubG9jYWxlX2RhdGEubWVzc2FnZXM7bG9jYWxlRGF0YVsiIl0uZG9tYWluPWRvbWFpbjt3cC5pMThuLnNldExvY2FsZURhdGEobG9jYWxlRGF0YSxkb21haW4pfSkoImRlZmF1bHQiLHsidHJhbnNsYXRpb24tcmV2aXNpb24tZGF0ZSI6IjIwMjMtMDctMTUgMTU6Mjk6MDkrMDAwMCIsImdlbmVyYXRvciI6Ikdsb3RQcmVzc1wvNC4wLjAtYWxwaGEuOSIsImRvbWFpbiI6Im1lc3NhZ2VzIiwibG9jYWxlX2RhdGEiOnsibWVzc2FnZXMiOnsiIjp7ImRvbWFpbiI6Im1lc3NhZ2VzIiwicGx1cmFsLWZvcm1zIjoibnBsdXJhbHM9MTsgcGx1cmFsPTA7IiwibGFuZyI6InZpX1ZOIn0sIiUxJHMgaXMgZGVwcmVjYXRlZCBzaW5jZSB2ZXJzaW9uICUyJHMhIFVzZSAlMyRzIGluc3RlYWQuIFBsZWFzZSBjb25zaWRlciB3cml0aW5nIG1vcmUgaW5jbHVzaXZlIGNvZGUuIjpbIiUxJHMgXHUwMTExXHUwMGUzIG5nXHUxZWVibmcgaG9cdTFlYTF0IFx1MDExMVx1MWVkOW5nIHRcdTFlZWIgcGhpXHUwMGVhbiBiXHUxZWEzbiAlMiRzISBTXHUxZWVkIGRcdTFlZTVuZyB0aGF5IHRoXHUxZWJmIGJcdTFlYjFuZyAlMyRzLiJdfX0sImNvbW1lbnQiOnsicmVmZXJlbmNlIjoid3AtYWRtaW5cL2pzXC9wYXNzd29yZC1zdHJlbmd0aC1tZXRlci5qcyJ9fSk=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-admin/js/password-strength-meter.min.js" id="password-strength-meter-js" defer data-deferred="1"></script>
+<script type="text/javascript" id="wc-password-strength-meter-js-extra" src="data:text/javascript;base64,dmFyIHdjX3Bhc3N3b3JkX3N0cmVuZ3RoX21ldGVyX3BhcmFtcz17Im1pbl9wYXNzd29yZF9zdHJlbmd0aCI6IjMiLCJzdG9wX2NoZWNrb3V0IjoiIiwiaTE4bl9wYXNzd29yZF9lcnJvciI6IlZ1aSBsXHUwMGYybmcgbmhcdTFlYWRwIG1cdTFlYWR0IGtoXHUxZWE5dSBraFx1MDBmMyBoXHUwMWExbi4iLCJpMThuX3Bhc3N3b3JkX2hpbnQiOiJHXHUxZWUzaSBcdTAwZmQ6IE1cdTFlYWR0IGtoXHUxZWE5dSBwaFx1MWVhM2kgY1x1MDBmMyBcdTAwZWR0IG5oXHUxZWE1dCAxMiBrXHUwMGZkIHRcdTFlZjEuIFx1MDExMFx1MWVjMyBuXHUwMGUybmcgY2FvIFx1MDExMVx1MWVkOSBiXHUxZWEzbyBtXHUxZWFkdCwgc1x1MWVlZCBkXHUxZWU1bmcgY2hcdTFlZWYgaW4gaG9hLCBpbiB0aFx1MDFiMFx1MWVkZG5nLCBjaFx1MWVlZiBzXHUxZWQxIHZcdTAwZTAgY1x1MDBlMWMga1x1MDBmZCB0XHUxZWYxIFx1MDExMVx1MWViN2MgYmlcdTFlYzd0IG5oXHUwMWIwICEgXCIgPyAkICUgXiAmICkuIn0=" defer></script>
+<script type="text/javascript" src="https://kyo.vn/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js" id="wc-password-strength-meter-js" defer="defer" data-wp-strategy="defer"></script>
+<div class="fab-wrapper">
+    <input id="fabCheckbox" type="checkbox" class="fab-checkbox">
+    <label class="fab" for="fabCheckbox">
+        <i class="icon-cps-fab-menu"></i>
+        <!-- <i class="icon-cps-close"></i> -->
+    </label>
+    <div class="fab-wheel">
+        <a class="fab-action fab-action-1" href="tel:0975436989" rel="nofollow">
+            <span class="fab-title">Gọi ngay</span>
+            <div class="fab-button fab-button-1"><i class="icon-cps-phone"></i></div>
+        </a>
+        <a class="fab-action fab-action-2" href="https://m.me/kyoauthentic" rel="nofollow">
+            <span class="fab-title">Chat Facebook</span>
+            <div class="fab-button fab-button-2"><i class="icon-cps-chat"></i></div>
+        </a>
+        <a class="fab-action fab-action-4" href="https://zalo.me/0975436989" target="_blank" rel="nofollow">
+            <span class="fab-title">Chat Zalo</span>
+            <div class="fab-button fab-button-4"><i class="icon-cps-chat-zalo"></i></div>
+        </a>
+    </div>
+    <div class="devvn_bg"></div>
+</div><script src="data:text/javascript;base64,dmFyIHphbG9fYWNjPXsiMDk3NTQzNjk4OSI6IjF1Nzc5YzgxaHpnbTYiLH07ZnVuY3Rpb24gZGV2dm5DaGVja0xpbmtBdmFpbGFiaWxpdHkobGluayxzdWNjZXNzQ2FsbGJhY2ssZXJyb3JDYWxsYmFjayl7dmFyIGhpZGRlbklmcmFtZT1kb2N1bWVudC5xdWVyeVNlbGVjdG9yKCIjaGlkZGVuSWZyYW1lIik7aWYoIWhpZGRlbklmcmFtZSl7aGlkZGVuSWZyYW1lPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImlmcmFtZSIpO2hpZGRlbklmcmFtZS5pZD0iaGlkZGVuSWZyYW1lIjtoaWRkZW5JZnJhbWUuc3R5bGUuZGlzcGxheT0ibm9uZSI7ZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChoaWRkZW5JZnJhbWUpfQp2YXIgdGltZW91dD1zZXRUaW1lb3V0KGZ1bmN0aW9uKCl7ZXJyb3JDYWxsYmFjaygiTGluayBpcyBub3Qgc3VwcG9ydGVkLiIpO3dpbmRvdy5yZW1vdmVFdmVudExpc3RlbmVyKCJibHVyIixoYW5kbGVCbHVyKX0sMjUwMCk7dmFyIHJlc3VsdD17fTtmdW5jdGlvbiBoYW5kbGVNb3VzZU1vdmUoZXZlbnQpe2lmKCFyZXN1bHQueCl7cmVzdWx0PXt4OmV2ZW50LmNsaWVudFgseTpldmVudC5jbGllbnRZLH19fQpmdW5jdGlvbiBoYW5kbGVCbHVyKCl7Y2xlYXJUaW1lb3V0KHRpbWVvdXQpO3dpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJtb3VzZW1vdmUiLGhhbmRsZU1vdXNlTW92ZSl9CndpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJibHVyIixoYW5kbGVCbHVyKTt3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcigiZm9jdXMiLGZ1bmN0aW9uIG9uRm9jdXMoKXtzZXRUaW1lb3V0KGZ1bmN0aW9uKCl7aWYoZG9jdW1lbnQuaGFzRm9jdXMoKSl7c3VjY2Vzc0NhbGxiYWNrKGZ1bmN0aW9uKHBvcyl7aWYoIXBvcy54KXtyZXR1cm4hMH0KdmFyIHNjcmVlbldpZHRoPXdpbmRvdy5pbm5lcldpZHRofHxkb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuY2xpZW50V2lkdGh8fGRvY3VtZW50LmJvZHkuY2xpZW50V2lkdGg7dmFyIGFsZXJ0V2lkdGg9MzAwO3ZhciBhbGVydEhlaWdodD0xMDA7dmFyIGlzWEluUmFuZ2U9cG9zLngtMTAwPDAuNSooc2NyZWVuV2lkdGgrYWxlcnRXaWR0aCkmJnBvcy54KzEwMD4wLjUqKHNjcmVlbldpZHRoK2FsZXJ0V2lkdGgpO3ZhciBpc1lJblJhbmdlPXBvcy55LTQwPGFsZXJ0SGVpZ2h0JiZwb3MueSs0MD5hbGVydEhlaWdodDtyZXR1cm4gaXNYSW5SYW5nZSYmaXNZSW5SYW5nZT8iTGluayBjYW4gYmUgb3BlbmVkLiI6IkxpbmsgaXMgbm90IHN1cHBvcnRlZC4ifShyZXN1bHQpKX1lbHNle3N1Y2Nlc3NDYWxsYmFjaygiTGluayBjYW4gYmUgb3BlbmVkLiIpfQp3aW5kb3cucmVtb3ZlRXZlbnRMaXN0ZW5lcigiZm9jdXMiLG9uRm9jdXMpO3dpbmRvdy5yZW1vdmVFdmVudExpc3RlbmVyKCJibHVyIixoYW5kbGVCbHVyKTt3aW5kb3cucmVtb3ZlRXZlbnRMaXN0ZW5lcigibW91c2Vtb3ZlIixoYW5kbGVNb3VzZU1vdmUpfSw1MDApfSx7b25jZTohMH0pO2hpZGRlbklmcmFtZS5jb250ZW50V2luZG93LmxvY2F0aW9uLmhyZWY9bGlua30KT2JqZWN0LmtleXMoemFsb19hY2MpLm1hcChmdW5jdGlvbihzZHQsaW5kZXgpe2xldCBxcmNvZGU9emFsb19hY2Nbc2R0XTtjb25zdCB6YWxvTGlua3M9ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnYVtocmVmKj0iemFsby5tZS8nK3NkdCsnIl0nKTt6YWxvTGlua3MuZm9yRWFjaCgoemFsbyk9Pnt6YWxvLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwoZXZlbnQpPT57ZXZlbnQucHJldmVudERlZmF1bHQoKTtjb25zdCB1c2VyQWdlbnQ9bmF2aWdhdG9yLnVzZXJBZ2VudC50b0xvd2VyQ2FzZSgpO2NvbnN0IGlzSU9TPS9pcGhvbmV8aXBhZHxpcG9kLy50ZXN0KHVzZXJBZ2VudCk7Y29uc3QgaXNBbmRyb2lkPS9hbmRyb2lkLy50ZXN0KHVzZXJBZ2VudCk7bGV0IHJlZGlyZWN0VVJMPW51bGw7aWYoaXNJT1Mpe3JlZGlyZWN0VVJMPSd6YWxvOi8vcXIvcC8nK3FyY29kZTt3aW5kb3cubG9jYXRpb24uaHJlZj1yZWRpcmVjdFVSTH1lbHNlIGlmKGlzQW5kcm9pZCl7cmVkaXJlY3RVUkw9J3phbG86Ly96YWxvYXBwLmNvbS9xci9wLycrcXJjb2RlO3dpbmRvdy5sb2NhdGlvbi5ocmVmPXJlZGlyZWN0VVJMfWVsc2V7cmVkaXJlY3RVUkw9J3phbG86Ly9jb252ZXJzYXRpb24/cGhvbmU9JytzZHQ7emFsby5jbGFzc0xpc3QuYWRkKCJ6YWxvX2xvYWRpbmciKTtkZXZ2bkNoZWNrTGlua0F2YWlsYWJpbGl0eShyZWRpcmVjdFVSTCxmdW5jdGlvbihyZXN1bHQpe3phbG8uY2xhc3NMaXN0LnJlbW92ZSgiemFsb19sb2FkaW5nIil9LGZ1bmN0aW9uKGVycm9yKXt6YWxvLmNsYXNzTGlzdC5yZW1vdmUoInphbG9fbG9hZGluZyIpO3JlZGlyZWN0VVJMPSdodHRwczovL2NoYXQuemFsby5tZS8/cGhvbmU9JytzZHQ7d2luZG93LmxvY2F0aW9uLmhyZWY9cmVkaXJlY3RVUkx9KX19KX0pfSk7dmFyIHN0eWxlRWxlbWVudD1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJzdHlsZSIpO3ZhciBjc3NDb2RlPSIuemFsb19sb2FkaW5nIHsgcG9pbnRlci1ldmVudHM6IG5vbmU7IH0iO3N0eWxlRWxlbWVudC5pbm5lckhUTUw9Y3NzQ29kZTtkb2N1bWVudC5oZWFkLmFwcGVuZENoaWxkKHN0eWxlRWxlbWVudCk=" defer></script>
+
+<script data-no-optimize="1">!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).LazyLoad=e()}(this,function(){"use strict";function e(){return(e=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n,a=arguments[e];for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(t[n]=a[n])}return t}).apply(this,arguments)}function i(t){return e({},it,t)}function o(t,e){var n,a="LazyLoad::Initialized",i=new t(e);try{n=new CustomEvent(a,{detail:{instance:i}})}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent(a,!1,!1,{instance:i})}window.dispatchEvent(n)}function l(t,e){return t.getAttribute(gt+e)}function c(t){return l(t,bt)}function s(t,e){return function(t,e,n){e=gt+e;null!==n?t.setAttribute(e,n):t.removeAttribute(e)}(t,bt,e)}function r(t){return s(t,null),0}function u(t){return null===c(t)}function d(t){return c(t)===vt}function f(t,e,n,a){t&&(void 0===a?void 0===n?t(e):t(e,n):t(e,n,a))}function _(t,e){nt?t.classList.add(e):t.className+=(t.className?" ":"")+e}function v(t,e){nt?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")}function g(t){return t.llTempImage}function b(t,e){!e||(e=e._observer)&&e.unobserve(t)}function p(t,e){t&&(t.loadingCount+=e)}function h(t,e){t&&(t.toLoadCount=e)}function n(t){for(var e,n=[],a=0;e=t.children[a];a+=1)"SOURCE"===e.tagName&&n.push(e);return n}function m(t,e){(t=t.parentNode)&&"PICTURE"===t.tagName&&n(t).forEach(e)}function a(t,e){n(t).forEach(e)}function E(t){return!!t[st]}function I(t){return t[st]}function y(t){return delete t[st]}function A(e,t){var n;E(e)||(n={},t.forEach(function(t){n[t]=e.getAttribute(t)}),e[st]=n)}function k(a,t){var i;E(a)&&(i=I(a),t.forEach(function(t){var e,n;e=a,(t=i[n=t])?e.setAttribute(n,t):e.removeAttribute(n)}))}function L(t,e,n){_(t,e.class_loading),s(t,ut),n&&(p(n,1),f(e.callback_loading,t,n))}function w(t,e,n){n&&t.setAttribute(e,n)}function x(t,e){w(t,ct,l(t,e.data_sizes)),w(t,rt,l(t,e.data_srcset)),w(t,ot,l(t,e.data_src))}function O(t,e,n){var a=l(t,e.data_bg_multi),i=l(t,e.data_bg_multi_hidpi);(a=at&&i?i:a)&&(t.style.backgroundImage=a,n=n,_(t=t,(e=e).class_applied),s(t,ft),n&&(e.unobserve_completed&&b(t,e),f(e.callback_applied,t,n)))}function N(t,e){!e||0<e.loadingCount||0<e.toLoadCount||f(t.callback_finish,e)}function C(t,e,n){t.addEventListener(e,n),t.llEvLisnrs[e]=n}function M(t){return!!t.llEvLisnrs}function z(t){if(M(t)){var e,n,a=t.llEvLisnrs;for(e in a){var i=a[e];n=e,i=i,t.removeEventListener(n,i)}delete t.llEvLisnrs}}function R(t,e,n){var a;delete t.llTempImage,p(n,-1),(a=n)&&--a.toLoadCount,v(t,e.class_loading),e.unobserve_completed&&b(t,n)}function T(o,r,c){var l=g(o)||o;M(l)||function(t,e,n){M(t)||(t.llEvLisnrs={});var a="VIDEO"===t.tagName?"loadeddata":"load";C(t,a,e),C(t,"error",n)}(l,function(t){var e,n,a,i;n=r,a=c,i=d(e=o),R(e,n,a),_(e,n.class_loaded),s(e,dt),f(n.callback_loaded,e,a),i||N(n,a),z(l)},function(t){var e,n,a,i;n=r,a=c,i=d(e=o),R(e,n,a),_(e,n.class_error),s(e,_t),f(n.callback_error,e,a),i||N(n,a),z(l)})}function G(t,e,n){var a,i,o,r,c;t.llTempImage=document.createElement("IMG"),T(t,e,n),E(c=t)||(c[st]={backgroundImage:c.style.backgroundImage}),o=n,r=l(a=t,(i=e).data_bg),c=l(a,i.data_bg_hidpi),(r=at&&c?c:r)&&(a.style.backgroundImage='url("'.concat(r,'")'),g(a).setAttribute(ot,r),L(a,i,o)),O(t,e,n)}function D(t,e,n){var a;T(t,e,n),a=e,e=n,(t=It[(n=t).tagName])&&(t(n,a),L(n,a,e))}function V(t,e,n){var a;a=t,(-1<yt.indexOf(a.tagName)?D:G)(t,e,n)}function F(t,e,n){var a;t.setAttribute("loading","lazy"),T(t,e,n),a=e,(e=It[(n=t).tagName])&&e(n,a),s(t,vt)}function j(t){t.removeAttribute(ot),t.removeAttribute(rt),t.removeAttribute(ct)}function P(t){m(t,function(t){k(t,Et)}),k(t,Et)}function S(t){var e;(e=At[t.tagName])?e(t):E(e=t)&&(t=I(e),e.style.backgroundImage=t.backgroundImage)}function U(t,e){var n;S(t),n=e,u(e=t)||d(e)||(v(e,n.class_entered),v(e,n.class_exited),v(e,n.class_applied),v(e,n.class_loading),v(e,n.class_loaded),v(e,n.class_error)),r(t),y(t)}function $(t,e,n,a){var i;n.cancel_on_exit&&(c(t)!==ut||"IMG"===t.tagName&&(z(t),m(i=t,function(t){j(t)}),j(i),P(t),v(t,n.class_loading),p(a,-1),r(t),f(n.callback_cancel,t,e,a)))}function q(t,e,n,a){var i,o,r=(o=t,0<=pt.indexOf(c(o)));s(t,"entered"),_(t,n.class_entered),v(t,n.class_exited),i=t,o=a,n.unobserve_entered&&b(i,o),f(n.callback_enter,t,e,a),r||V(t,n,a)}function H(t){return t.use_native&&"loading"in HTMLImageElement.prototype}function B(t,i,o){t.forEach(function(t){return(a=t).isIntersecting||0<a.intersectionRatio?q(t.target,t,i,o):(e=t.target,n=t,a=i,t=o,void(u(e)||(_(e,a.class_exited),$(e,n,a,t),f(a.callback_exit,e,n,t))));var e,n,a})}function J(e,n){var t;et&&!H(e)&&(n._observer=new IntersectionObserver(function(t){B(t,e,n)},{root:(t=e).container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}))}function K(t){return Array.prototype.slice.call(t)}function Q(t){return t.container.querySelectorAll(t.elements_selector)}function W(t){return c(t)===_t}function X(t,e){return e=t||Q(e),K(e).filter(u)}function Y(e,t){var n;(n=Q(e),K(n).filter(W)).forEach(function(t){v(t,e.class_error),r(t)}),t.update()}function t(t,e){var n,a,t=i(t);this._settings=t,this.loadingCount=0,J(t,this),n=t,a=this,Z&&window.addEventListener("online",function(){Y(n,a)}),this.update(e)}var Z="undefined"!=typeof window,tt=Z&&!("onscroll"in window)||"undefined"!=typeof navigator&&/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),et=Z&&"IntersectionObserver"in window,nt=Z&&"classList"in document.createElement("p"),at=Z&&1<window.devicePixelRatio,it={elements_selector:".lazy",container:tt||Z?document:null,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",data_bg_hidpi:"bg-hidpi",data_bg_multi:"bg-multi",data_bg_multi_hidpi:"bg-multi-hidpi",data_poster:"poster",class_applied:"applied",class_loading:"litespeed-loading",class_loaded:"litespeed-loaded",class_error:"error",class_entered:"entered",class_exited:"exited",unobserve_completed:!0,unobserve_entered:!1,cancel_on_exit:!0,callback_enter:null,callback_exit:null,callback_applied:null,callback_loading:null,callback_loaded:null,callback_error:null,callback_finish:null,callback_cancel:null,use_native:!1},ot="src",rt="srcset",ct="sizes",lt="poster",st="llOriginalAttrs",ut="loading",dt="loaded",ft="applied",_t="error",vt="native",gt="data-",bt="ll-status",pt=[ut,dt,ft,_t],ht=[ot],mt=[ot,lt],Et=[ot,rt,ct],It={IMG:function(t,e){m(t,function(t){A(t,Et),x(t,e)}),A(t,Et),x(t,e)},IFRAME:function(t,e){A(t,ht),w(t,ot,l(t,e.data_src))},VIDEO:function(t,e){a(t,function(t){A(t,ht),w(t,ot,l(t,e.data_src))}),A(t,mt),w(t,lt,l(t,e.data_poster)),w(t,ot,l(t,e.data_src)),t.load()}},yt=["IMG","IFRAME","VIDEO"],At={IMG:P,IFRAME:function(t){k(t,ht)},VIDEO:function(t){a(t,function(t){k(t,ht)}),k(t,mt),t.load()}},kt=["IMG","IFRAME","VIDEO"];return t.prototype={update:function(t){var e,n,a,i=this._settings,o=X(t,i);{if(h(this,o.length),!tt&&et)return H(i)?(e=i,n=this,o.forEach(function(t){-1!==kt.indexOf(t.tagName)&&F(t,e,n)}),void h(n,0)):(t=this._observer,i=o,t.disconnect(),a=t,void i.forEach(function(t){a.observe(t)}));this.loadAll(o)}},destroy:function(){this._observer&&this._observer.disconnect(),Q(this._settings).forEach(function(t){y(t)}),delete this._observer,delete this._settings,delete this.loadingCount,delete this.toLoadCount},loadAll:function(t){var e=this,n=this._settings;X(t,n).forEach(function(t){b(t,e),V(t,n,e)})},restoreAll:function(){var e=this._settings;Q(e).forEach(function(t){U(t,e)})}},t.load=function(t,e){e=i(e);V(t,e)},t.resetStatus=function(t){r(t)},Z&&function(t,e){if(e)if(e.length)for(var n,a=0;n=e[a];a+=1)o(t,n);else o(t,e)}(t,window.lazyLoadOptions),t});!function(e,t){"use strict";function a(){t.body.classList.add("litespeed_lazyloaded")}function n(){console.log("[LiteSpeed] Start Lazy Load Images"),d=new LazyLoad({elements_selector:"[data-lazyloaded]",callback_finish:a}),o=function(){d.update()},e.MutationObserver&&new MutationObserver(o).observe(t.documentElement,{childList:!0,subtree:!0,attributes:!0})}var d,o;e.addEventListener?e.addEventListener("load",n,!1):e.attachEvent("onload",n)}(window,document);</script></body>
+</html>
