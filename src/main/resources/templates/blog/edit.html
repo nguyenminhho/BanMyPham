@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admins/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <div th:replace="admins/fragments/header :: header"></div>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <div th:replace="admins/fragments/sidebar :: sidebar"></div>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content">
+            <div class="row sm-gutter">
+                <form role="form" method="post" th:action="@{/admin/edit-blog}" th:object="${blog}" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control"  th:field="*{id}">
+                    <input type="hidden" class="form-control"  th:field="*{image}">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên blog</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" th:field="*{title}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Hình ảnh</label>
+                            <input type="file" class="form-control"  name="file" multiple >
+                            <img th:src="@{'/uploads/'+${blog.image}}" width="100px" class="img-circle">
+                        </div>
+
+
+                        <label for="exampleInputEmail1">Nội dung blog</label>
+                            <textarea name="editor1" id="editor1" rows="10" cols="80" th:field="*{content}"></textarea>
+                            <!--                                <script>-->
+                            <!--                                    CKEDITOR.replace( 'editor1' );-->
+                            <!--                                </script>-->
+
+
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Thêm mới</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div th:replace="admins/fragments/footer :: footer"></div>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script th:src="@{/assets/ckeditor/ckeditor.js}"></script>
+<!--<script>CKEDITOR.replace( 'editor1' );</script>-->
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery-ui.js}"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/js/adminlte.min.js}"></script>
+<script th:src="@{/assets/js/dashboard.js}"></script>
+<script th:src="@{/assets/tinymce/tinymce.min.js}"></script>
+<script th:src="@{/assets/tinymce/config.js}"></script>
+<script th:src="@{/assets/js/function.js}"></script>
+</body>
+</html>

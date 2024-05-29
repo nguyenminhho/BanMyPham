@@ -1,0 +1,35 @@
+<aside class="main-sidebar p-0" xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="li-user">
+                <div>User: </div>
+                <div class="ml-3" th:text="${user.fullName}"></div>
+            </li>
+
+            <li class="treeview">
+                <a href="#" class="hover-none">
+                    <i class="fa fa-dashboard "></i> <span class="text-silebar"  >Tài khoản của tôi </span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="hover-red"><a th:href="@{/user/detail-infoUser}">Hồ sơ</a></li>
+                    <li class="hover-red"> <a th:href="@{/user/located-user}">Địa chỉ</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a th:href="@{/user/purchase}" class="hover-none">
+                    <i class="fa fa-th"></i> <span class="text-silebar">Đơn mua</span>
+                    <span class="pull-right-container">
+                            <small class="label pull-right bg-green">FE</small>
+                        </span>
+                </a>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

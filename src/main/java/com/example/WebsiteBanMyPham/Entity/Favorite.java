@@ -2,23 +2,27 @@ package com.example.WebsiteBanMyPham.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "favorite")
-@NoArgsConstructor
+
 public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Integer status = 0;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product_favorite;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "blog_id", referencedColumnName = "id")
+    private Blog blog_favorite;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user_favorite;
 

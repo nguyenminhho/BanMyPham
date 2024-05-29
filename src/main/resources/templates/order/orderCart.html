@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán</title>
+    <link rel="stylesheet" th:href="@{/assets/css/productDetail.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/shoppingCart.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/headers.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<!--<section class="home" id="home">-->
+
+<main role="main" class="mainn">
+
+    <section class="about" >
+        <div class="cart-about mb-0" >
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="located-prod" style="color:#ee4d2d">Địa chỉ nhận hàng</div>
+        </div>
+        <div class="cart-about mb-0">
+                <div class="located-oder" th:object="${user}">
+                    <div>
+                        <span th:text="${user.fullName}"></span>
+                        <span>(+84)</span>
+                        <span th:text="${user.phone}"></span>
+                    </div>
+                    <table>
+                        <tbody>
+                        <tr th:if="${not #lists.isEmpty(user.address)}" th:each="address: ${user.address}">
+                            <td>
+                                <div>
+
+                                    <span class="located-detail" th:text="${address.address}"></span>
+                                    <button id="edit-button" class="btn-replace">Thay đổi</button>
+                                    <form id="edit-form" role="form" method="post" th:action="@{/address-edit}" >
+                                        <input type="hidden" name="addressId" th:value="${address.id}" />
+                                        <input type="text" name="addressContent" class="comment-prod">
+                                            <button type="submit" class="btn-replace-s">Đồng ý</button>
+                                        <button type="button" class="btn-replace" id="cancel-button">Huỷ</button>
+                                    </form>
+
+
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                              const editButton = document.getElementById('edit-button');
+                                              const editForm = document.getElementById('edit-form');
+                                               const cancelButton = document.getElementById('cancel-button');
+
+                                              editButton.addEventListener('click', () => {
+                                                  editForm.style.display = 'block';
+                                              });
+                                               cancelButton.addEventListener('click', () => {
+                                                    editForm.style.display = 'none';
+                                                });
+                                          });
+                                    </script>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(user.address)}">
+                            <td>
+                                <div class="located-add">
+                                    <span style="width: 300px">Bạn chưa có địa chỉ</span>
+                                    <form class="form-add-located" role="form" method="post" th:action="@{/address-add}" th:object="${addressOne}">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Vui lòng nhâp địa chỉ" th:field="*{address}">
+                                        <button>
+                                            <i class="fa-regular fa-circle-check"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+        </div>
+
+    </section>
+    <section class="sec-about">
+        <div class="cart-about mb-0 mb-0" >
+            <div class="cart-prod" style="margin-left: 70px">Sản Phẩm</div>
+            <div class="cart-price">Đơn Giá</div>
+            <div class="cart-totalNumber">Số Lượng</div>
+            <div class="cart-totalPrice">Thành Tiền</div>
+        </div>
+        <div th:each="cartItem: ${listCartItem}" th:if="${cartItem.status == 1}">
+            <form method="GET" th:action="@{/cart/update}" class="update-form">
+                <input type="hidden" name="id" th:value="${cartItem.id}">
+                <div class="cart-about-second mb-0 mt-0" >
+                    <div class="cart-prod">
+                        <a class="a-cart-item">
+                            <img th:src="@{'/uploads/'+${cartItem.product_cartItem.image}}" class="img-cart">
+                            <div>
+                                <div  class="cart-detail">
+                                    <span  th:text="${cartItem.product_cartItem.name}"></span>
+                                    <div>
+                                        <span class="detail-product-name ">Loai Da</span>
+                                        <span  th:text="${cartItem.product_cartItem.skinType}"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cart-price">
+                        <div class="dis-flex " style="margin-left: 65px">
+                            <span class="sp-money" style="font-size: 15px color: #ee4d2d;" th:text="${#numbers.formatDecimal(cartItem.product_cartItem.price, 0, 'COMMA', 3, 'POINT')}">10.00</span>
+                            <div class="mketV9">₫</div>
+                        </div>
+
+                    </div>
+                    <div class="cart-totalNumber">
+                            <span th:text="${cartItem.aty}"></span>
+                    </div>
+                    <div class="cart-totalPrice">
+                        <div class="dis-flex" style="margin-left: 33px">
+                            <span class="sp-money" style="font-size: 15px color: #ee4d2d;" th:text="${#numbers.formatDecimal(cartItem.totalPrice, 0, 'POINT', 3, 'POINT')}">10.00</span>
+                            <div class="mketV9">₫</div>
+                        </div>
+                        <!--               <span th:text="${cartItem.totalPrice}"></span>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="sec-about mb-0 pb-0">
+        <div class="cart-about mb-0 mb-0" >
+            <div style="display: flex" th:if="${listCartItem != null and not #lists.isEmpty(listCartItem)}">
+                <div class="mes-order">Lời nhắn</div>
+<!--                <form class="form-add-located" role="form" method="post" >-->
+<!--                    <input type="text" placeholder="Lưu ý cho người bán" class="form-control text-order" style="padding: 5px">-->
+<!--                    <input type="submit" class="note-save" value="Lưu" />-->
+<!--                </form>-->
+                <!--                <form class="form-add-located" role="form" method="post"  th:object="${note}">-->
+                <!--                    <input type="text" placeholder="Lưu ý cho người bán" class="form-control text-order" style="padding: 5px" th:field="*{description}">-->
+                <!--                </form>-->
+            </div>
+            <div class="cart-price">Được đồng kiểm </div>
+            <div>
+                <i class="fa-solid fa-hourglass-start"></i>
+            </div>
+            <div class="cart-price">Trả hàng trong vòng 7 ngày</div>
+        </div>
+    </section>
+
+    <section class="pt-0">
+        <div class="order-container">
+            <form class="form-add-located" role="form" method="post" th:action="@{/payment/create}" >
+                <div class="space-cartPay"></div>
+                <div class="payMoney-child payMoney-1">Tổng thanh toán(</div>
+                <span class="payMoney-child" th:text="${countCartItem}"></span>
+                <span class="payMoney-child">san pham) :</span>
+                <input class="payMoney-child payMoney-child-1" style="height: 39px;" th:value="${#numbers.formatDecimal(totalPriceCartItem, 0, 'POINT', 3, 'POINT')}"></input>
+
+                <div class="mketV9">₫</div>
+                <div class="div-orderPay" style="display: flex">
+                    <input type="hidden" name="method" value="paypal">
+                    <input type="hidden" name="orderId" th:value="${order1.id}">
+                    <input type="hidden" name="amount" th:value="${totalPriceCartItem}">
+
+                    <!--                        <input type="hidden" name="amount" value="100.00">-->
+                        <input type="hidden" name="currency" value="USD">
+<!--                        <input type="hidden"  value="Mô tả đơn hàng của bạn">-->
+                        <input type="text" name="description" placeholder="Lưu ý cho người bán" class="form-control text-order" style="padding: 5px;    width: auto;">
+                        <button type="submit" class="word-cart btn-2">Đặt hàng</button>
+    <!--                <a class="btn-3 ml-5" th:href="@{/payment/create}">-->
+    <!--                   th:href="@{/order-add}" >-->
+
+    <!--                 </a>-->
+
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+
+
+
+
+
+</main>
+
+<div th:replace="footer :: footer"></div>
+
+
+
+<script th:src="@{/assets/js/script.js}"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop bán Mỹ Phẩm</title>
+    <link rel="stylesheet" th:href="@{/assets/css/productDetail.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/headers.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<!--    <link rel="stylesheet" th:href="@{/assets/css/stylee.css}">-->
+
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+
+<main role="main" class="mainn">
+
+        <section class="about">
+            <div  th:object="${blog}" enctype="multipart/form-data">
+                    <section class="section-container">
+                        <p class="product-name-detail">
+                            <span>Chủ đề :</span>
+                            <span class="title-blog"  th:text="${blog.title}"></span>
+                        </p>
+                        <div class="img-blog-detail">
+                            <img th:src="'/uploads/'+${blog.image}" class="img-circle">
+                        </div>
+
+                        <p class="detail-blog-content">
+                            <td  th:text="${blog.content}"></td>
+                        </p>
+
+                    </section>
+
+            </div >
+        </section>
+
+    </section>
+    <section class="sec-about" >
+<!--        <div  th:object="${product}" enctype="multipart/form-data">-->
+            <section class="section-container">
+                <div class="favorite-container" >
+<!--                    <form method="post" style="display: flex;" th:object="${favorite}" th:action="@{/favorite-add}">-->
+<!--&lt;!&ndash;                          th:action="@{/favorite}">&ndash;&gt;-->
+<!--                        <div class="section-detail">Yêu thích</div>-->
+<!--                        <button type="submit" style="background-color: white;">-->
+<!--                            <i class="fas fa-heart icon-favorite-blog" id="favorite-icon" style="display: flex; align-items: center;color: #e2dada;"></i>-->
+<!--                        </button>-->
+<!--                    </form>-->
+                    <form method="post" id="favorite-form" style="display: flex;" th:object="${favorite}" th:action="@{/favorite-add}">
+                        <input type="hidden" name="blogId" th:value="${blog.id}" />
+                        <div class="section-detail">Yêu thích</div>
+                        <button type="submit" style="background-color: white;" id="favorite-button">
+                            <i class="fas fa-heart icon-favorite-blog"
+                               th:class="${favoriteStatus == 1 ? 'fas fa-heart icon-favorite-blog favorite' : 'fas fa-heart icon-favorite-blog'}"
+                               id="favorite-icon"
+                               style="display: flex; align-items: center; color: #e2dada;cursor: pointer;">
+                            </i>
+<!--                            <i class="fas fa-heart icon-favorite-blog" th:classappend="${favorite.status == 1 ? 'favorite' : ''}" id="favorite-icon" style="display: flex; align-items: center; color: #e2dada;"></i>-->
+<!--                        -->
+                        </button>
+                        <div th:if="${countFavorite} != null">
+                            <div  class="countFavorite" th:text="${countFavorite}"></div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="flex items-center about-1">
+                    <div class="section-detail">Bình luận về Blog</div>
+                </div>
+<!--                <div th:if="${comment.product_comment.id == product.id}">-->
+                <div class="container-comment" th:each="user : ${userList}" th:object="${blog}">
+                    <div class="comment-detail" th:each="comment : ${user.comments}">
+
+                        <div style="display: flex" th:if="${comment.blog_comment != null && comment.blog_comment.id == blog.id}">
+                        <div class="name-comment">
+                        </div>
+                            <div>
+                                <div class="detail-commentContext">
+
+                                    <div th:text="${user.fullName}"></div>
+                                    <div th:text="${comment.content}"></div>
+
+
+                                </div>
+                                <div style="margin-left: 20px;">
+                                    <div th:text="${comment.getTimeAgo()}"></div> <!-- Hiển thị thời gian so với hiện tại -->
+                                </div>
+                            </div>
+
+                            <i class="fa-solid fa-ellipsis icon-all"></i>
+                            <div class="action-buttons">
+                                <div>
+                                    <form class="form-add-located"  role="form" method="post" th:action="@{/commentBlog-edit}">
+                                        <input type="hidden" name="commentId" th:value="${comment.id}" />
+                                        <input type="text" name="commentContent" class="comment-prod">
+                                        <button style="background-color: white">
+                                            <i class="fa-solid fa-location-arrow"></i>
+                                        </button>
+                                    </form>
+                                    <button  id="edit-button" >Chinh sua</button>
+                                  <form role="form" method="post" th:action="@{/commentBlog-delete}">
+                                      <input type="hidden" name="commentId" th:value="${comment.id}" />
+                                      <button type="submit">Xoa</button>
+                                  </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+                <div>
+                    <form class="form-add-located" style="display: flex;" role="form" method="post" th:action="@{/commentBlog-add}" th:object="${blog}">
+                        <input type="hidden" name="blogId" th:value="${blog.id}" />
+                        <div th:object="${comment}">
+                            <input type="text" class="comment-prod" id="exampleInputEmail1" placeholder="Vui lòng nhâp đánh giá..." th:field="*{content}">
+                        </div>
+
+                        <button style="background-color: white">
+                            <i class="fa-solid fa-location-arrow"></i>
+                        </button>
+                    </form>
+
+                </div>
+
+            </section>
+
+
+<!--        </div >-->
+    </section>
+
+</main>
+<!--</section>-->
+<div th:replace="footer :: footer"></div>
+
+
+
+
+<script th:src="@{/assets/js/script.js}"></script>
+</body>
+</html>

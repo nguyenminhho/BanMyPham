@@ -1,0 +1,14 @@
+.content-shop{
+    font-size: 15px;
+}
+
+.login-register{
+    margin-right: 50px;
+    margin-top: 5px;
+}
+
+.name-admin{
+    align-items: center;
+    display: flex;
+    color: #e5dbd;
+}

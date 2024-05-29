@@ -1,5 +1,6 @@
 package com.example.WebsiteBanMyPham;
 
+
 import com.example.WebsiteBanMyPham.service.StorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,4 +23,15 @@ public class WebsiteBanMyPhamApplication {
 		};
 	}
 
+//	@Bean
+//	public Cloudinary cloudinary(){
+//		Cloudinary c = new Cloudinary(ObjectUtils.asMap(
+//				"cloud_name", "dvelq4hvv",
+//				"api_key", "229893263349964",
+//				"api_secret", "WuBTbdDTYZdL0JFrHSABCpxXMa8",
+//				"secure", true
+//
+//		));
+//		return c;
+//	}
 }

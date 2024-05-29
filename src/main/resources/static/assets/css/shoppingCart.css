@@ -1,0 +1,276 @@
+.hd-container{
+    display: flex;
+    color: #ee4d2d;
+        font-size: 18px;
+}
+
+.img-logo{
+    width: 70px !important;
+}
+.hd-cart{
+border-left: .0625rem solid #ee4d2d;
+    line-height: 1.875rem;
+        margin-left: .9375rem;
+        padding-left: .9375rem;
+}
+
+.cart-about{
+    display: flex;
+    align-items: center;
+        background: #fff;
+        border-radius: .125rem;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+        color: #888;
+        display: flex;
+        font-size: 14px;
+        height: 55px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        padding: 0 20px;
+}
+
+.box-select-all{
+    box-sizing: border-box;
+        display: flex;
+        flex-direction: row-reverse;
+        min-width: 58px;
+        padding: 0 25px 0 20px;
+}
+
+.cart-prod{
+    color: rgba(0, 0, 0, .8);
+        width: 46.27949%;
+}
+
+
+
+.cart-price{
+    text-align: center;
+    width: 15.88022%;
+}
+
+.cart-totalNumber{
+    width: 15.4265%;
+    text-align: center;
+}
+
+.cart-totalPrice{
+    width: 10.43557%;
+    text-align: center;
+}
+
+.cart-action{
+    width: 12.70417%;
+    text-align: center;
+}
+
+.cart-about-second{
+    display: flex;
+    align-items: center;
+        background: #fff;
+        border-radius: .125rem;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+        color: #888;
+        display: flex;
+        font-size: 14px;
+        height: auto;
+        margin-bottom: 12px;
+        overflow: hidden;
+        padding: 0 20px;
+        border-bottom: solid #bdbdbd 0.1px;
+        margin-top: 10px;
+}
+
+.img-cart{
+    margin: 15px;
+        height: 100px;
+        width: auto;
+        border-radius: 20px;
+}
+.a-cart-item{
+    display: flex;
+}
+
+.cart-detail{
+    margin-top: 40px;
+    margin-left: 22px;
+}
+
+.fa-add:before, .fa-plus:before {
+    padding: 10px;
+    font-size: 12px;
+}
+.cart-aty{
+       padding-left: 20px;
+        width: 50px;
+}
+.suQW3X{
+    padding: 12px;
+}
+
+.fa-minus:before, .fa-subtract:before {
+    padding: 10px;
+}
+
+.cart-action {
+    width: auto !important;
+}
+
+.btn-updateCart{
+    margin-left: 10px;
+}
+
+.clear-btn-style {
+    background: 0;
+    border: 0;
+}
+.btn-cartDeletePay{
+    margin: 0 8px;
+    cursor: pointer;
+    }
+
+.space-cartPay{
+       flex: 1;
+       margin-left: 70px;
+}
+
+.pay-1{
+    display: flex;
+    flex-direction: column;
+}
+
+.payMoney{
+    color: black !important;
+    align-items: center;
+        display: flex;
+        margin-right: 20px;
+}
+
+.btn-3{
+    padding: 10px 70px 10px 70px;
+    background-color: #ee4d2d;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.word-cart{
+    color: white;
+}
+
+.container-form{
+color: black;
+    height: 60px;
+    border: solid 1px black !important;
+}
+
+.payMoney-child{
+    margin-right: 5px;
+    width: auto;
+}
+
+
+
+.dis-flex{
+    display: flex;
+}
+
+.fa-location-dot:before, .fa-map-marker-alt:before {
+
+    color: #ee4d2d;
+    margin-right: 20px;
+
+}
+
+.located-prod{
+       font-size: 20px;
+    color: #ee4d2d;
+     height: 30px;
+}
+
+.located-oder{
+    display: flex;
+}
+
+.located-detail{
+    margin-left: 50px;
+     margin-right: 50px;
+}
+
+.located-add{
+    display: flex;
+    margin-left: 50px;
+}
+
+.mes-order{
+    margin-left: 70px;
+        margin-right: 70px;
+        margin-top: 7px;
+}
+
+.text-order{
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 8px;
+}
+
+.note-save{
+    margin-top: 7px;
+    background: none;
+}
+.order-container{
+
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: .125rem;
+
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .05);
+
+        display: flex;
+        font-size: 14px;
+        height: 55px;
+        margin-bottom: 12px;
+        margin-right: 120px;
+    margin-left: 120px;
+        padding: 0 20px;
+}
+
+.form-add-located{
+    display: flex;
+}
+
+.container-sec-order{
+   display: flex;
+   padding: 40px;
+}
+
+.div-orderPay{
+    margin-left: 20px;
+}
+
+.payMoney-child-1{
+    font-size: 15px;
+     color: #ee4d2d;
+      width: 60px;
+      padding-bottom: 15px;
+}
+
+ #edit-form {
+        display: none;
+        margin: 0 0 10px 50px;
+    }
+
+.btn-replace{
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-replace-s{
+    padding-right: 5px;
+    border-right: 1px solid #ee4d2d;
+    background-color: white;
+    cursor: pointer;
+}

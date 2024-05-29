@@ -1,0 +1,119 @@
+
+
+.footer{
+    border-top: solid 3px red;
+    text-align: center;
+    background-color: #e5eaf096;
+}
+.footer .share{
+    padding: 1rem 0;
+}
+.footer .share a{
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    color: #fff;
+    border: var(--border);
+    margin: .3rem;
+    border-radius: 50%;
+}
+.footer .share a:hover{
+    background-color: var(--main-color);
+}
+.footer .links{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    gap: 1rem;
+}
+.footer .links a{
+    padding: .7rem 2rem;
+    color: #fff;
+    border: var(--border);
+    font-size: 2rem;
+}
+.footer .links a:hover{
+    background-color: var(--main-color);
+}
+.footer .credit{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: lighter;
+    padding: 1.5rem;
+}
+.footer .credit span{
+    color: var(--main-color);
+}
+
+
+
+
+
+
+
+.ft-container{
+display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100%;
+    justify-items: center;
+    margin: 0 -.3125rem;
+    overflow: hidden;
+    }
+
+    .ft-cover:first-child {
+        justify-self: start;
+    }
+    .ft-container, .ft-cover {
+        margin-left: 50px;
+        align-items: center;
+    }
+    .ft-cover {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+.fa-shield-heart:before  {
+    height: 3.125rem;
+        margin-right: .75rem;
+        width: 3.125rem;
+        color: #ee4d2d;
+        font-size: 30px;
+}
+
+.fa-right-left:before{
+height: 3.125rem;
+        margin-right: .75rem;
+        width: 3.125rem;
+        color: #ee4d2d;
+        font-size: 30px;
+}
+
+.fa-truck:before {
+height: 3.125rem;
+        margin-right: .75rem;
+        width: 3.125rem;
+        color: #ee4d2d;
+        font-size: 30px;
+}
+
+.ft-cover-1{
+    max-width: 17.1875rem;
+        margin-left: 7px;
+}
+
+.ft-content{
+    margin: 0px;
+    color: rgba(0, 0, 0, .54);
+    text-align: left !important;
+}
+
+.ft-first {
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    height: 7.5rem;
+    width: 100%;
+}
+.fa-instagram:before .fa-twitter:before{
+    font-size: 25px;
+    }

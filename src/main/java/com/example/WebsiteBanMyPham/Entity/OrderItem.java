@@ -1,34 +1,32 @@
 package com.example.WebsiteBanMyPham.Entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "orderItem")
-@NoArgsConstructor
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer count;//so luong san pham
-
-    private Integer size;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product_orderItem;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "oder_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order_orderItem;
 
+    @ManyToOne( fetch = FetchType.EAGER)
+    @JoinColumn(name = "cartItem_id", referencedColumnName = "id")
+    private CartItem cartItem_orderItem;
 
+    public OrderItem() {
+    }
 
-
-
-
-
+    public OrderItem(Long id, Order order_orderItem, CartItem cartItem_orderItem) {
+        this.id = id;
+        this.order_orderItem = order_orderItem;
+        this.cartItem_orderItem = cartItem_orderItem;
+    }
 }

@@ -1,0 +1,24 @@
+<div class="home-product" xmlns:th="http://www.thymeleaf.org">
+    <div class="row sm-gutter">
+        <tr th:each="product: ${listProduct}">
+            <div class="col-md-3">
+                <a th:href="@{/product-detail/{id}(id=${product.id})}" class="home-product-item">
+                    <div>
+                        <img th:src="@{'/uploads/'+${product.image}}" class="img-circle">
+                    </div>
+                    <h4 class="home-product-item__name">
+                        <td th:text="${product.name}"></td>
+                    </h4>
+                    <div class="home-product-item__price">
+                        <span class="sp-money" style="font-size: 18px" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 3, 'POINT')}">10.00</span>
+                        <div class="mketV9">₫</div>
+                    </div>
+                    <div class="home-product-item__favourite">
+                        <i class="fas fa-check"></i>
+                        <span>Yêu thích</span>
+                    </div>
+                </a>
+            </div>
+        </tr>
+    </div>
+</div>

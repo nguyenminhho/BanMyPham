@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admins/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <div th:replace="admins/fragments/header :: header"></div>
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <div th:replace="admins/fragments/sidebar :: sidebar"></div>
+
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="col-xs-12">
+        <div class="box">
+          <!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tbody>
+              <tr>
+                <th>Tên người mua</th>
+                <th>Địa chỉ</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Price</th>
+              </tr>
+
+              <tr th:each="order: ${orderList}" th:if="${order.orderStatus != null && order.orderStatus == 1}">
+                  <td th:text="${order.user_order.fullName}"></td>
+                  <td  th:text="${order.address}"></td>
+                  <td>
+                    <ul>
+                      <li th:each="orderItems : ${order.orderItem}" th:text="${orderItems.cartItem_orderItem.product_cartItem.name}"></li>
+<!--                      <li th:each="cartItem : ${order.orderItem.cartItems}" th:text="${cartItem.product_cartItem.name}"></li>-->
+                    </ul>
+                  </td>
+                  <td th:text="${order.totalAty}"></td>
+                  <td>
+                    <span th:text="${#numbers.formatDecimal(order.totalOrder, 0, 'COMMA', 3, 'POINT')}">10.00</span>
+                  </td>
+                </tr>
+
+
+
+
+
+              </tbody></table>
+          </div>
+
+<!--          <div class="">-->
+<!--            <div class="pagination-view">-->
+<!--              <div class="up-down" th:if="${currentPage > 1}" >-->
+<!--                <a class="color-a" th:href="@{'?pageNo='+${currentPage -1}}"><</a>-->
+<!--              </div>-->
+
+<!--              <div class="up-down" th:each="i:${#numbers.sequence(1,totalPage)}" th:classappend="${currentPage == i ? 'active' : ''}">-->
+<!--                <a class="color-a" th:href="@{'?pageNo='+${i}}"  th:text="${i}" ></a>-->
+<!--              </div>-->
+
+<!--              <div class="up-down" th:if="${currentPage < totalPage}">-->
+<!--                <a class="color-a" th:href="@{'?pageNo='+${currentPage +1}}">></a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+        </div>
+
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <div th:replace="admins/fragments/footer :: footer"></div>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script th:src="@{/assets/ckeditor/ckeditor.js}"></script>
+<script>CKEDITOR.replace( 'editor1' );</script>
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery-ui.js}"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/js/adminlte.min.js}"></script>
+<script th:src="@{/assets/js/dashboard.js}"></script>
+<script th:src="@{/assets/tinymce/tinymce.min.js}"></script>
+<script th:src="@{/assets/tinymce/config.js}"></script>
+<script th:src="@{/assets/js/function.js}"></script>
+</body>
+</html>

@@ -40,3 +40,40 @@
 .table-action a.label{
 	margin-left: 5px
 }
+.pagination-view{
+    display: flex;
+        justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+}
+
+.up-down{
+    font-size: 30px;
+margin-right: 10px;
+}
+
+.color-a{
+padding: 10px;
+ color: gray;
+}
+
+.active{
+    background-color: #e9dada;
+}
+
+.blog-img{
+    width: 200px;
+}
+.blog-title{
+    line-height: 1.4;
+}
+
+.container-blog{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #e4dfdf;
+}
+
+.img-cart{
+width: 100px;
+}

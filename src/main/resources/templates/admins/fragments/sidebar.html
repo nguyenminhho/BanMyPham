@@ -1,0 +1,67 @@
+<aside class="main-sidebar" xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+        <ul class="sidebar-menu" data-widget="tree">
+
+            <li>
+                <a th:href="@{/admin/category}">
+                    <i class="fa fa-th"></i> <span>Quản lý Danh Muc </span>
+                    <span class="pull-right-container">
+              <small class="label pull-right bg-green">FE</small>
+            </span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Quản lý San Pham</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a th:href="@{/admin/product}"><i class="fa fa-circle-o"></i> Danh sách sản phẩm</a></li>
+                    <li><a th:href="@{/admin/product-add}"><i class="fa fa-circle-o"></i>Thêm mới sản phẩm</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Quản lý Blog</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a th:href="@{/admin/blog}"><i class="fa fa-circle-o"></i> Danh sách Blog</a></li>
+                    <li><a th:href="@{/admin/blog-add}"><i class="fa fa-circle-o"></i> Thêm mới Blog</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Quản lý Đơn Hàng</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a th:href="@{/admin/order}"><i class="fa fa-circle-o"></i> Danh sách Đơn hàng</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="">
+                    <i class="fa fa-th"></i> <span>Widgets</span>
+                    <span class="pull-right-container">
+              <small class="label pull-right bg-green">Hot</small>
+            </span>
+                </a>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admins/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <div th:replace="admins/fragments/header :: header"></div>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <div th:replace="admins/fragments/sidebar :: sidebar"></div>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content">
+            <div class="row sm-gutter">
+                <tr th:each="blog: ${blogList}">
+                    <div class="col-md-3">
+                        <div class="container-blog">
+                            <h4 class="blog-title">
+                                <td th:text="${blog.title}"></td>
+                            </h4>
+                            <div>
+                                <img th:src="'/uploads/'+${blog.image}" class="img-circle blog-img">
+                            </div>
+                        </div>
+                        <td>
+                            <a th:href="@{/admin/blog-edit/{id}(id=${blog.id})}" class="btn btn-success">Sửa</a>
+                            <a th:href="@{/admin/blog-delete/{id}(id=${blog.id})}" onclick="return confirm('Are you sure!!')" class="btn btn-danger">Xóa</a>
+                        </td>
+
+                    </div>
+
+                </tr>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div th:replace="admins/fragments/footer :: footer"></div>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script th:src="@{/assets/ckeditor/ckeditor.js}"></script>
+<script>CKEDITOR.replace( 'editor1' );</script>
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery-ui.js}"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/js/adminlte.min.js}"></script>
+<script th:src="@{/assets/js/dashboard.js}"></script>
+<script th:src="@{/assets/tinymce/tinymce.min.js}"></script>
+<script th:src="@{/assets/tinymce/config.js}"></script>
+<script th:src="@{/assets/js/function.js}"></script>
+</body>
+</html>
